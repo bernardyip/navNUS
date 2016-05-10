@@ -19,12 +19,18 @@ namespace navNUS
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+        }
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+        [Java.Interop.Export("clickme")]
+        public void clickMe(View v)
+        {
+            FindViewById<Button>(Resource.Id.MyButton).Text = string.Format("{0} clicks!", count++);
+        }
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+        [Java.Interop.Export("test")]
+        public void test(View v)
+        {
+            Toast.MakeText(this, "Hello", ToastLength.Long).Show();
         }
     }
 }
