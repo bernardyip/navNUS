@@ -31,7 +31,8 @@ namespace navNUS
             graph.addEdge(2, 3, 0);
             graph.addEdge(3, 4, 1);
             graph.addEdge(4, 0, 5);
-			graph.addEdge(4, 1, 1);
+            graph.addEdge(4, 1, 1);
+            graph.addEdge(4, 2, 1);
             Console.WriteLine(graph.ToString());
 
             //Find shortest path from 0
