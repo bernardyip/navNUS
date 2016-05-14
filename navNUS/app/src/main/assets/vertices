@@ -1,0 +1,825 @@
+0;Value Machine / TransitLink @ Block ADM;1.296236378;103.7723875
+1;AXS Station @ Block ADM;1.296236378;103.7723875
+2;DBS/POSB Cash Deposit Machine @ Yusof Ishak House;1.298410586;103.7745539
+3;OCBC ATM @ The Deck;1.295055313;103.7724058
+4;UOB ATM @ S16;1.29682;103.78026
+5;University Hall;1.297293218;103.7779172
+6;Yusof Ishak House;1.298410586;103.7745539
+7;Shaw Foundation Association House;1.293533229;103.7736902
+8;Computer Centre;1.29758;103.77251
+9;University Health Centre;1.298943865;103.7764982
+10;NUS Enterprise;1.292429487;103.7755195
+11;University Cultural Centre;1.301728637;103.7721489
+12;Central Library;1.296261755;103.7730289
+13;NUS Business School;1.294293526;103.7745665
+14;School of Computing;1.294896602;103.7739567
+15;Faculty of Dentistry;1.296829958;103.7819145
+16;School of Design & Environment;1.297432799;103.770836
+17;Faculty of Engineering;1.300385691;103.7712593
+18;Yong Loo Lin School of Medicine;1.296767341484114;103.78132057701671
+19;Yong Siew Toh Conservatory of Music;1.30256017;103.7726908
+20;NUS Graduate School for Integrative Sciences and Engineering;1.294398099;103.7810372
+21;Faculty of Science;1.296729166;103.7803005
+22;University Scholars Programme;1.306710229;103.7734601
+23;BIZ2;1.29337;103.77557
+24;Stephen Riady Centre;1.304895;103.772481
+25;Saw Swee Hock School of Public Health (SSHSPH);1.295336;103.780635
+26;Yale-NUS College;1.307267498;103.7722093
+27;COM1;1.294896602;103.7739567
+28;S9A;1.2959797647927012;103.77988250211654
+29;S9;1.2961350684767508;103.77995745496212
+30;S8;1.2961897828170077;103.77939456804268
+31;S7;1.296499547036645;103.77886507433884
+32;S6;1.295157583189392;103.78027475941525
+33;S5;1.2955859651096584;103.77977829906466
+34;S4A;1.2959794251436991;103.77918214965692
+35;S4;1.2957612328917367;103.7791572415485
+36;S3;1.2957693736519718;103.7786403108803
+37;S2;1.2957607069382995;103.7780733632071
+38;S17;1.2977759115747283;103.78061534533117
+39;S16;1.2967687682050102;103.78029066361893
+40;S15;1.297175966;103.780232
+41;S14;1.296961514902412;103.77975696903493
+42;S13;1.2969192941541667;103.77921504953949
+43;S12;1.2971791606966014;103.77865631026442
+44;S11;1.2968603509558183;103.77879820116237
+45;S10;1.2964328273571673;103.77971553456855
+46;S1;1.296037530573969;103.77787312989179
+47;Mochtar Riady Building;1.292647709;103.7739452
+48;EA;1.298488661;103.7714177
+49;S2S;1.297628767;103.774836
+50;T-Lab Building;1.299937963;103.7721526
+51;E3;1.299409071;103.7718465
+52;Centre for Life Sciences (CeLS);1.294590927;103.7806202
+53;Opp ITE Dover Bus Stop (B16091);1.299329;103.779165
+54;NUH Bus Stop (B18071);1.295524;103.784334
+55;Opp National University Hospital Bus Stop (B19079);1.296492;103.784684
+56;Bef Kent Ridge Terminal Bus Stop (B16139);1.295399;103.769794
+57;Kent Ridge Terminal Bus Stop (B16009);1.294462;103.769756
+58;Faculty Of Architecture Bus Stop (B16149);1.29776;103.7699
+59;Faculty Of Engineering Bus Stop (B16159);1.300573;103.770133
+60;Opp Kent Ridge Terminal Bus Stop (B16131);1.294748;103.769371
+61;Tentera Diraja Mosque Bus Stop (B16141);1.297877;103.769613
+62;The Japanese Primary School Bus Stop (B16151);1.30082;103.769905
+63;Central Library Bus Stop (B16181);1.296513;103.772543
+64;Computer Centre Bus Stop (B16189);1.297354;103.772765
+65;Faculty Of Design and Environment Bus Stop (B16199);1.296533;103.77102
+66;Raffles Hall Bus Stop (B16169);1.301039;103.772868
+67;Opp Faculty Of Architect Bus Stop (B16191);1.296209;103.770725
+68;Opp Raffles Hall Bus Stop (B16161);1.301249;103.773281
+69;Opp Yusof Ishak House Bus Stop (B16179);1.298992;103.774151
+70;Yusof Ishak House Bus Stop (B16171);1.298838;103.774324
+71;Computing SOC1 Bus Stop (B18309);1.297538;103.780727
+72;Opp University Health Centre Bus Stop (B18321);1.298766;103.775564
+73;University Health Centre Bus Stop (B18329);1.298926;103.775989
+74;Kent Ridge Bus Station (B18331);1.293668;103.784921
+75;Lim Seng Tjoe Bus Stop (B18301);1.297352;103.780823
+76;National University Hospital Bus Stop (B18221);1.295715;103.783811
+77;Opp Kent Ridge Station Bus Stop (B18339);1.294113;103.785063
+78;Opp National University Hospital Bus Stop (B18239);1.296789;103.783269
+79;Opp University Hall Bus Stop (B18319);1.297602;103.777951
+80;S12 Bus Stop (B18311);1.29716;103.778733
+81;Pasir Panjang Road-.Opp Heng Mui Keng Terrace (B16061);1.29051;103.773456
+82;Pasir Panjang Road-.Heng Mui Keng Terrace (B16069);1.290858;103.773124
+83;Aft Science Park Drive Bus Stop (B15131);1.292684;103.784489
+84;Bef Science Park Drive Bus Stop (B15139);1.292349;103.784624
+85;ITE Dover Bus Stop (B16099);1.300514;103.77823
+86;Faculty of Arts and Social Sciences Bus Stop (A2,B,D1);1.295474;103.770619
+87;Faculty of Arts and Social Sciences Bus Stop (A1,B,D2,BTC1);1.294589;103.770645
+88;Temasek Hall Bus Stop (A2,D1);1.293305;103.772331
+89;Create Bus Stop (D1,D2,UT-FoS,UT-CLB);1.303704;103.77477
+90;Kent Ridge Guild House Bus Stop (A1,A2,B,D1,D2);1.294314;103.77369
+91;NUS Business School Bus Stop (A1,D2,BTC1);1.293669;103.775108
+92;NUS Business School Bus Stop (A2,D1);1.293316;103.775233
+93;Internal Shuttle Bus Terminal (A1,A2,BTC1);1.292151;103.780238
+94;Centre For Maritime Studies Bus Stop (A1);1.293841;103.777092
+95;Centre For Maritime Studies Bus Stop (A2);1.293489;103.777396
+96;NUS Enterprise Incubator (A1);1.293323;103.777859
+97;NUS Enterprise Incubator (A2);1.293126;103.778002
+98;Transview Golf Club Bus Stop (B19059);1.308914;103.772753
+99;Transview Golf Club Bus Stop (B17099);1.307901;103.771621
+100;Carpark 2A (In front of E3A);1.3008347820274;103.77155502864
+101;Carpark 4 (Raffles Hall / Centre for the Arts Studio);1.3004873949731;103.77384030379
+102;Carpark 5 (Sports and Recreation Centre);1.3000524229429;103.77470885842
+103;Carpark 6B (University Hall);1.2972932421824;103.77791716681
+104;Carpark 10 (Block S17);1.297849334619034;103.78117572390109
+105;Carpark 10A (CRISP);1.2924669989485;103.78200768922
+106;Carpark 11 (In front of IMRE);1.2946766463263;103.77506508887
+107;Carpark 15 (In front of Temasek and Eusoff Halls);1.2941052955569;103.77062720449
+108;Carpark 16 (LT 11);1.295612160958715;103.77105508950831
+109;Carpark 3 (University Cultural Centre / Yong Siew Toh Conservatory of Music);1.3024606570482211;103.77312782501966
+110;Carpark 10B (Prince George's Park Residences);1.2914125855094605;103.7802866834634
+111;Carpark 12A (Institute of Systems Science);1.2924874833332087;103.77672085181554
+112;Carpark 1 (School of Design and Environment);1.2977479476101;103.77025756327
+113;Carpark 10C (Centre for Life Sciences);1.29453;103.78134
+114;Carpark 11A (Block BIZ2);1.2946766463263;103.77506508887
+115;Carpark 12 (Hon Sui Sen Memorial Library);1.2928292911279;103.77474648446
+116;12B (I3 Building);1.29217;103.77582
+117;Carpark 13 (Block COM1);1.2947788519685;103.77350651242
+118;Carpark 14 (Shaw Foundation Building, AS7);1.2938920868233115;103.77143944285133
+119;Carpark 17 (Computer Centre);1.2973416497151;103.77224629068
+120;Carpark 2 (Faculty of Engineering);1.299720040893;103.77262797258
+121;Carpark 2B (Beside Block EA);1.2995669766755;103.77015493889
+122;Carpark 4A (Raffles Hall / Centre for the Arts Studio);1.2993562210355618;103.77400476472107
+123;Carpark 5B (NUS Staff Club);1.2990356820394;103.77554347215
+124;Carpark 6 (Between Block S7 and S13);1.2967315093449;103.77899715719
+125;Carpark 6A (Block S1A);1.2964716328959491;103.77831665306121
+126;Carpark 7 (Between Block S10 and S14);1.2967400795135;103.77987668591
+127;Carpark 8 (Block S16);1.2972447919597914;103.78065912969161
+128;Carpark 9A (Clinical Research Centre, MD11);1.2973213864219;103.78154756579
+129;Carpark 18 (Block ADM);1.29639;103.77225
+130;Centre for the Arts Studio;1.2993;103.77366
+131;Kent Ridge Guild House;1.2940582;103.7730585
+132;NUS Child Care Centre (The Little Skool-House @ Kent Vale Pte Ltd);1.301406423;103.7690414
+133;NUS Staff Club;1.299269997;103.7758203
+134;NUS Student Union (NUSSU) Secretariat;1.298410586;103.7745539
+135;Raffles Museum of Biodiversity Research;1.295120334;103.78043
+136;Shaw Foundation Alumni House;1.293533229;103.7736902
+137;Sports and Recreation Centre;1.30017579;103.7757383
+138;Student Service Centre;1.298410586;103.7745539
+139;NUS Museum;1.301464181;103.7724412
+140;NUS Libraries;1.296261755;103.7730289
+141;NUS Society;1.2940582;103.7730585
+142;Education Resource Centre;1.306017569;103.7728852
+143;Edusports Complex;1.304782015;103.7722602
+144;Value Machine / TransitLink @ Block ADM;1.296236378;103.7723875
+145;NUS Coop - IT Coop @ Yusof Ishak House;1.29864;103.77471
+146;NUS Coop - Science;1.296989566;103.7809841
+147;NUS Coop - IT Coop @ School of Design and Environment;1.297432799;103.770836
+148;NUS Coop - Forum;1.29646;103.77301
+149;Former Visitor's Lodge;1.298595563;103.7734108
+150;Adaptive Computing Research Lab;1.294896602;103.7739567
+151;Algorithms Research Lab;1.294896602;103.7739567
+152;Alice Lee Centre for Nursing Studies;1.29614814;103.78177
+153;Alumni Complex;1.2940582;103.781178
+154;Animal Holding Unit;1.295022;103.781178
+155;Antenatal Diagnostic Centre;1.29497624;103.7831274
+156;Bachelor of Technology Programme;1.300016076;103.7704674
+157;Bio-Sciences Complex;1.296798124;103.7801705
+158;Centre for Advanced Chemical Engineering (CAChE);1.297969561;103.7725819
+159;Centre for Advanced Computations in Engineering Science (ACES);1.300016076;103.7704674
+160;Centre for Advanced Studies in Architecture (CASA);1.298471915;103.7704265
+161;Centre for Construction Materials and Technology (CCMT);1.2995798;103.7708428
+162;Centre for Design Technology (CDT);1.298298707;103.7726502
+163;Centre for e-Business (COB);1.293635134;103.7743163
+164;Centre for Environmental and Occupational Health Research (CEOHR);1.295474916;103.7811183
+165;Centre for Information Mining and Extraction (CHIME);1.297692127;103.7804485
+166;Centre for Instructional Technology (CIT);1.29756;103.77255
+167;Centre for Integrated Circuit Failure Analysis and Reliability (CICFAR);1.299266085;103.7719004
+168;Centre for Intelligent Control (CIC);1.30016;103.77079
+169;Centre for Intelligent Products and Manufacturing Systems (CIPMAS);1.30016;103.77079
+170;Centre for Ion Beam Applications (CIBA);1.296407648;103.7789932
+171;Centre for Language Studies;1.294723667;103.7720058
+172;Centre for Maritime Studies (CMS);1.292968732904042;103.77813970473392
+173;Centre for Microwave and Radio Frequency (CMRF);1.298298707;103.7726502
+174;Centre for Molecular Epidemiology (CME);1.295474916;103.7811183
+175;Centre for Optoelectronics (COE);1.299266085;103.7719004
+176;Centre for Power Electronics (CPE);1.299266085;103.7719004
+177;Centre for Protective Technology (CPT);1.297218012;103.775346
+178;Centre for Systems Security Lab;1.297692127;103.7804485
+179;Centre for Total Building Performance (CTBP);1.297432799;103.770836
+180;Centre for Transportation Research (CTR);1.2995798;103.7708428
+181;Centre for Water Research (CWR);1.299739266;103.7706926
+182;Centre for Wavelets Approximation and Information Processing (CWAIP);1.296869365;103.7793682
+183;Chemical Molecular and Materials Analysis Centre (CMMAC);1.2962232;103.7793351
+184;Clinic for Human Reproduction;1.29497624;103.7831274
+185;Clinical Research Centre;1.296131254;103.7817534
+186;Communications and Internet Research Lab 1;1.296903085;103.779685
+187;Communications and Internet Research Lab 2;1.296903085;103.779685
+188;Communications and New Media Programme;1.295462739;103.7732727
+189;Computational Biology Research Lab;1.294896602;103.7739567
+190;Computational Linguistics Research Lab;1.295500528;103.773356
+191;Computer Systems Lab;1.296903085;103.779685
+192;Computer Vision Research Lab;1.295500528;103.773356
+193;Corporate Governance and Financial Reporting Centre;1.293635134;103.7743163
+194;Database Research Lab 1;1.294896602;103.7739567
+195;Database Research Lab 2;1.294896602;103.7739567
+196;Dean's Office (Arts and Social Sciences);1.294620653;103.7711662
+197;Dean's Office (Medicine);1.296131254;103.7817534
+198;Dean's Office (Science);1.296729166;103.7803005
+199;Dean's Office (Computing);1.294896602;103.7739567
+200;Dean's Office (Design and Environment);1.297432799;103.770836
+201;Department of Anaesthesia;1.29497624;103.7831274
+202;Department of Anatomy (ANATOMY);1.296374605;103.7817449
+203;Department of Architecture (ARCH);1.297432799;103.770836
+204;Department of Biochemistry;1.296171988;103.7810955
+205;Department of Biochemistry (Annexe);1.295734832;103.7806596
+206;Department of Biological Sciences;1.295945965;103.7783711
+207;Department of Business Policy;1.293635134;103.7743163
+208;Department of Chemical and Biomolecular Engineering;1.298111443;103.7722305
+209;Department of Chemistry;1.296214821;103.7793601
+210;Department of Chinese Studies;1.294620653;103.7711662
+211;Department of Computer Science;1.294896602;103.7739567
+212;Department of Decision Sciences (DECISION SCI);1.293635134;103.7743163
+213;Department of Diagnostic Radiology;1.29497624;103.7831274
+214;Department of Economics;1.295333899;103.7710991
+215;Department of Electrical and Computer Engineering;1.298298707;103.7726502
+216;Department of English Language and Literature (ENG LANG/LIT);1.294396443;103.7720976
+217;Department of Finance and Accounting;1.293635134;103.7743163
+218;Department of Geography (GEOGRAPHY);1.295333899;103.7710991
+219;Department of History;1.295328032;103.772364
+220;Department of Industrial & Systems Engineering;1.298488661;103.7714177
+221;Department of Information Systems;1.294896602;103.7739567
+222;Department of Japanese Studies;1.294723667;103.7720058
+223;Department of Malay Studies;1.294620653;103.7711662
+224;Department of Management and Organisation;1.293340753;103.7755249
+225;Department of Marketing;1.293635134;103.7743163
+226;Department of Mathematics;1.297692127;103.7804485
+227;Department of Mechanical Engineering;1.300016076;103.7704674
+228;Department of Medicine;1.29497624;103.7831274
+229;Department of Microbiology (MICROBIOLOGY);1.295827338;103.7809489
+230;Department of Obstetrics and Gynaecology;1.29497624;103.7831274
+231;Department of Ophthalmology;1.294934263;103.7831357
+232;Department of Oral and Maxillofacial Surgery;1.296829958;103.7819145
+233;Department of Otolaryngology;1.29497624;103.7831274
+234;Department of Paediatrics (PAEDIATRICS);1.29497624;103.7831274
+235;Department of Pathology (PATHOLOGY);1.29497624;103.7831274
+236;Department of Pharmacology (PHARMACOLOGY);1.295040123;103.7812787
+237;Department of Pharmacy;1.295694505;103.779277
+238;Department of Philosophy (PHILOSOPHY);1.294763398;103.7713495
+239;Department of Physics;1.297094014;103.77863
+240;Department of Physiology;1.295585763;103.7816703
+241;Department of Political Science;1.295328032;103.772364
+242;Department of Preventive Dentistry;1.296829958;103.7819145
+243;Department of Psychological Medicine;1.29497624;103.7831274
+244;Department of Psychology;1.294723667;103.7720058
+245;Department of Restorative Dentistry;1.296829958;103.7819145
+246;Department of Social Work;1.294763398;103.7713495
+247;Department of Sociology;1.295328032;103.772364
+248;Department of Statistics and Applied Probability;1.296798124;103.7801705
+249;Department of Surgery;1.29497624;103.7831274
+250;Development Office;1.293369562;103.7736736
+251;Department of Biomedical Engineering;1.2983196770463;103.77257929987
+252;Division of Engineering & Technology Management;1.30052;103.77091
+253;Division of Environmental Science and Engineering;1.29943;103.77085
+254;Division of Graduate Dental Studies;1.294217525;103.7836918
+255;Division of Graduate Medical Studies;1.295615589;103.7812728
+256;Division of Research and Graduate Studies NUS Business School;1.293340753;103.7755249
+257;Division of Research and Graduate Studies Faculty of Science;1.296729166;103.7803005
+258;Division of Research and Graduate Studies- Faculty of Arts and Social Sciences;1.294620653;103.7800203
+259;Electron Microscopy Unit;1.295644525;103.7815201
+260;Electronic Commerce and Database Research Lab;1.294896602;103.7739567
+261;Embedded Systems Research Lab 1;1.294896602;103.7739567
+262;Embedded Systems Research Lab 2;1.294896602;103.7739567
+263;Engineering IT Unit;1.298593947;103.7712667
+264;Engineering Science Programme;1.30027;103.77053
+265;External Relations Office;1.30027;103.77053
+266;G^3 Lab;1.295500528;103.773356
+267;GEA-NUS Pharmaceutical Processing Research Laboratory;1.295770008;103.7792353
+268;Graduate Studies Office (Engineering);1.30027;103.77053
+269;NUS Industry Liaison Office;1.292429487;103.7755195
+270;Industry Research Lab;1.295500528;103.773356
+271;Information Management Lab;1.297066597;103.7800536
+272;Information Storage Materials Laboratory;1.298951398;103.7726398
+273;Information Systems Research Lab;1.297692127;103.7804485
+274;Investment Office;1.297293242;103.7779172
+275;KIROS;1.294850141;103.7806792
+276;Knowledge Management Lab;1.297066597;103.7800536
+277;Lab for Media Search;1.295500528;103.773356
+278;Mechatronics Programme;1.300016076;103.7704674
+279;Medical Computing Research Lab;1.294896602;103.7739567
+280;Minimally-Invasive Surgical Centre;1.29497624;103.7831274
+281;Multimedia Analysis and Synthesis Lab;1.295500528;103.773356
+282;Multimedia Systems Lab;1.295500528;103.773356
+283;National Hepatitis Quality Assurance Centre;1.295727115;103.7808456
+284;National Malaria Reference Centre;1.295701318;103.780768
+285;Network Systems and Services Lab;1.296903085;103.779685
+286;NUS Centre For the Arts (NUS CFA);1.301728637;103.7721489
+287;NUS Entrepreneurship Centre;1.292553259;103.7754782
+288;NUS Overseas Colleges;1.292553259;103.7754782
+289;NUS Venture Support;1.29351894;103.7778931
+290;Office of Alumni Relations;1.293533229;103.7736902
+291;Office of Corporate Relations;1.297293242;103.7779172
+292;Office of the Deputy President (Administration);1.297293242;103.7779172
+293;Office of Estate Development;1.2954969573057;103.77030002108
+294;Office of Financial Services;1.297293242;103.7779172
+295;Office of Housing Services;1.29614;103.77245
+296;Office of Human Resources;1.297293242;103.7779172
+297;Office of Internal Audit;1.297293242;103.7779172
+298;Office of Legal Affairs;1.297293242;103.7779172
+299;Office of Life Sciences;1.294624596;103.7807369
+300;Office of Programmes - Faculty of Arts and Social Sciences;1.294620653;103.7711662
+301;Organisational Excellence Office;1.297293242;103.7779172
+302;Office of Resource Planning;1.297293242;103.7779172
+303;Office of Risk Management;1.297293242;103.7779172
+304;Office of Safety Health and Environment;1.295523;103.770266
+305;Office of Student Affairs;1.298410586;103.7745539
+306;Office of the Provost;1.297293242;103.7779172
+307;Orthopaedic Diagnostic Centre;1.29497624;103.7831274
+308;Para-clinical Laboratory;1.295474916;103.7811183
+309;Pharmacy - Annexe;1.295770008;103.7792353
+310;Pre-clinical Laboratory;1.295409262;103.7810951
+311;Institute for Engineering Leadership;1.298342347;103.7725684
+312;Programming Languages and Systems Research Lab 1;1.294896602;103.7739567
+313;Programming Languages and Systems Lab;1.297066597;103.7800536
+314;Protein and Proteomics Centre;1.29566756;103.7788343
+315;Registrar's Office;1.297293242;103.7779172
+316;Resource Allocation and Scheduling Lab;1.297066597;103.7800536
+317;Saw Centre for Financial Studies;1.293340753;103.7755249
+318;SENSORS LAB;1.295500528;103.773356
+319;Singapore Centre for Applied and Policy Economics (SCAPE);1.295333899;103.7710991
+320;Surface Science Laboratory;1.296850958;103.7792256
+321;Technopreneurship Incubation Programme;1.299266085;103.7719004
+322;Underground carparks CP10C;1.294624596;103.7807369
+323;Underground carparks CP3;1.302455451;103.7730994
+324;Underground carparks CP6B;1.297293242;103.7779172
+325;Function Room 4-4;1.292647709;103.7739452
+326;Function Room 4-2;1.292647709;103.7739452
+327;Yong Loo Lin School of Medicine (Dean's Office);1.296767341484114;103.78132057701671
+328;Undergraduate Studies Office;1.30014;103.77075
+329;Undergraduate Studies (BBA);1.292647709;103.7739452
+330;Strategic Technology Management Institute;1.292509295;103.7756529
+331;School of Design and Environment - Information Technology Unit;1.29839;103.77044
+332;School of Design and Environment - Information Resource Centre;1.297432799;103.770836
+333;School of Design and Environment - Exhibition Hall (Mezzanine);1.297432799;103.770836
+334;School of Design and Environment - Exhibition Hall;1.297432799;103.770836
+335;School of Design and Environment - Division of Industrial Design;1.297432799;103.770836
+336;School of Design and Environment - Department of Real Estate;1.297432799;103.770836
+337;School of Design and Environment - Department of Building;1.297432799;103.770836
+338;School of Design and Environment - Department of Architecture;1.297432799;103.770836
+339;School of Design and Environment - Dean's Office;1.297432799;103.770836
+340;School of Design and Environment - Conference Room;1.297432799;103.770836
+341;School of Design and Environment - Audio Visual Service Unit;1.297432799;103.770836
+342;PhD and Research;1.294264217;103.7746416
+343;Office of Programmes;1.294458488;103.7711744
+344;NUS-JTC Industrial Infrastructure Innovation Centre;1.297432799;103.770836
+345;National University Medical Institutes;1.296008131;103.7817242
+346;Minerals Metals and Materials Technology Centre;1.30027;103.77053
+347;Master of Landscape Architecture Studio;1.297432799;103.770836
+348;Institute of Real Estate Studies (IRES);1.292509295;103.7756529
+349;Graduate Studies (MBA and EMBA);1.292647709;103.7739452
+350;Global Engineering Programme;1.30027;103.77053
+351;Faculty of Arts and Social Sciences;1.294458488;103.7711744
+352;Dean's Office (Dentistry);1.296729879;103.7818439
+353;Executive Education;1.292647709;103.7739452
+354;Engineering Design and Innovation Centre;1.2987933487210361;103.77147436140115
+355;Energy and Sustainability Unit;1.297432799;103.770836
+356;Design Incubation Centre;1.29734;103.77119
+357;Department of Strategy and Policy;1.292647709;103.7739452
+358;Department of Southeast Asian Studies (SEA STUD (SEAD));1.294458488;103.7711744
+359;Department of Orthopaedic Surgery;1.29497624;103.7831274
+360;Department of Finance;1.292647709;103.7739452
+361;Department of Communications and New Media (CNM);1.29562;103.77321
+362;Department of Civil and Environmental Engineering (CEE);1.299411426;103.7708504
+363;Department of Accounting;1.292647709;103.7739452
+364;Department of Materials Science and Engineering (MSE);1.30027;103.77053
+365;Dean's Office (Engineering);1.30020924;103.7707924
+366;Dean's Office (Business);1.292647709;103.7739452
+367;DE Club Room;1.29839;103.77047
+368;Centre for Sustainable Asian Cities;1.297432799;103.770836
+369;Centre for Strategic Leadership;1.29345;103.77547
+370;Centre for Project Management and Construction Law;1.297432799;103.770836
+371;Centre for Governance Institutions and Organisations (CGIO);1.294264217;103.7746416
+372;Centre for Department of Teaching and Learning (CDTL);1.296732529;103.7737979
+373;Centre for Computational Science and Engineering;1.296729166;103.7803005
+374;Centre for Biomedical Ethics (CBME);1.295920039;103.7817159
+375;Centre for Behavioural Economics (CBE);1.294264217;103.7746416
+376;Centre for Asset Management Research and Investments (CAMRI);1.29433;103.77453
+377;Centre for Quantum Technologies;1.297175966;103.780232
+378;Center for Bioimaging Sciences (CBIS);1.296729166;103.7803005
+379;Cancer Science Institute of Singapore (CSIS);1.29572;103.7808
+380;CAMRI Trading Lab;1.292647709;103.7739452
+381;Building and Estate Society;1.297432799;103.770836
+382;Asia Centre for Social Enterpreneurship and Philanthropy;1.294264217;103.7746416
+383;Techno Edge Canteen;1.298488661;103.7714177
+384;Starbucks;1.295920039;103.7817159
+385;McDonald's Restaurant (Faculty of Engineering);1.29803;103.77115
+386;Good News CafÃ©;1.29807;103.77115
+387;Foodgle Hub;1.298488661;103.77117
+388;Food Science and Technology Programme;1.296729166;103.7803005
+389;Hon Sui Sen Auditorium;1.29342;103.77469
+390;Engineering Auditorium;1.30064;103.77064
+391;Strategic Relations;1.292647709;103.7739452
+392;Office of Registry;1.297293242;103.7779172
+393;Office of Public Affairs;1.297293242;103.7779172
+394;Office of Finance;1.297293242;103.7779172
+395;Office of Executive Vice-President (Administration);1.297293242;103.7779172
+396;Office of Executive Vice-President (Academic Affairs);1.297293242;103.7779172
+397;Office of Admissions and Financial Aid;1.297293242;103.7779172
+398;IT and Multi-Media;1.294264217;103.7746416
+399;Faculty of Arts and Social Sciences;1.294458488;103.7711744
+400;Global Alumni Network Office;1.293533229;103.7736902
+401;Finance and Admin;1.294264217;103.7746416
+402;Facilities and Operations;1.294264217;103.7746416
+403;Design and Construction Office;1.297293242;103.7779172
+404;Corporate Communications;1.292647709;103.7739452
+405;Career Services;1.292647709;103.7739452
+406;University Scholars Programme Writing Center;1.306710229;103.7734601
+407;University Scholars Programme Tutorial Room 2;1.306710229;103.7734601
+408;University Scholars Programme Tutorial Room 1;1.306710229;103.7734601
+409;University Scholars Programme Seminar Room 2;1.306710229;103.7734601
+410;University Scholars Programme Seminar Room 1;1.306710229;103.7734601
+411;University Scholars Programme Reading Room;1.306710229;103.7734601
+412;University Scholars Programme Multi-Media Lab;1.306710229;103.7734601
+413;University Scholars Programme General Office;1.306710229;103.7734601
+414;University Scholars Programme Chatter Box;1.306710229;103.7734601
+415;Master's Commons Lounge;1.306709987;103.773381
+416;Dining Hall;1.306709987;103.773381
+417;Cinnamon College (USP) Visitors' Apartments;1.306709987;103.773381
+418;Tissue Repair Laboratory;1.29934;103.77187
+419;Structural Engineering Laboratory;1.29855;103.77084
+420;Seminar room AB and C;1.294458488;103.7711744
+421;Science Demo Lab;1.296929;103.78024
+422;Research Teaching Lab;1.294264217;103.7746416
+423;Regenerative Nanomedicine Laboratory;1.29934;103.77187
+424;Plasmonics and Advanced Imaging Technologies;1.29839;103.7725
+425;Nano Biomechanics Laboratory;1.2934;103.7719
+426;Innovator's Laboratory;1.29916;103.77261
+427;Impact Mechanics Laboratory;1.30016;103.77076
+428;Fluids Mechanics Laboratory;1.29918;103.77263
+429;FASS Faculty Lounge;1.294458488;103.7711744
+430;Experimental Lab 4-7;1.296989566;103.7809841
+431;Experimental Lab 4-6;1.294264217;103.7746416
+432;Engineering Hibiscus Staff Lounge;1.29836;103.7725
+433;EDIC Glass House;1.29898;103.77267
+434;ECE-DSI Laser Microprocessing;1.29938;103.77187
+435;Design Studio;1.298488661;103.7714177
+436;DCP Electronics Workshop;1.299396026;103.7709127
+437;DCP Assembly Workshop 2;1.299396026;103.7709127
+438;DCP Assembly Workshop 1;1.299396026;103.7709127
+439;Behavioural Lab 4-8;1.29641129;103.7822804
+440;Behavioural Lab 4-11;1.29601689;103.7822389
+441;AS7 seminar rooms;1.294458488;103.7711744
+442;AS7 Auditorium;1.294458488;103.7711744
+443;AS6 seminar rooms;1.294264584;103.7725563
+444;AS5 seminar rooms;1.294458488;103.7711744
+445;AS4 seminar rooms;1.294458488;103.7711744
+446;AS3 seminar rooms;1.294458488;103.7711744
+447;AS2 seminar rooms;1.294458488;103.7711744
+448;AS1 seminar rooms;1.294458488;103.7711744
+449;Advanced Manufacturing Laboratory;1.30035;103.77054
+450;Advanced Control Technology;1.29836;103.77252
+451;Systems and Networking Research Lab 6;1.294896602;103.7739567
+452;Systems and Networking Research Lab 5;1.294896602;103.7739567
+453;Systems and Networking Research Lab 4;1.294896602;103.7739567
+454;Systems and Networking Research Lab 3;1.294896602;103.7739567
+455;Systems and Networking Research Lab 2;1.294896602;103.7739567
+456;Systems and Networking Research Lab 1;1.294896602;103.7739567
+457;SoC Incubation Centre;1.292509295;103.7756529
+458;Programming Languages and Software Engineering Lab 2;1.294896602;103.7739567
+459;Programming Languages and Software Engineering Lab 1;1.294896602;103.7739567
+460;Media Research Lab 9;1.294896602;103.7739567
+461;Media Research Lab 8;1.294896602;103.7739567
+462;Media Research Lab 7;1.294896602;103.7739567
+463;Media Research Lab 6;1.294896602;103.7739567
+464;Media Research Lab 5;1.294896602;103.7739567
+465;Media Research Lab 4;1.294896602;103.7739567
+466;Media Research Lab 3;1.294896602;103.7739567
+467;Media Research Lab 2;1.294896602;103.7739567
+468;Media Research Lab 12;1.294896602;103.7739567
+469;Media Research Lab 11;1.294896602;103.7739567
+470;Media Research Lab 10;1.294896602;103.7739567
+471;Media Research Lab 1;1.294896602;103.7739567
+472;Information Systems Research Lab 2;1.294896602;103.7739567
+473;Information Systems Research Lab 1;1.294896602;103.7739567
+474;I-Lab;1.294896602;103.7739567
+475;HCI Design Studio;1.294896602;103.7739567
+476;Database Research Lab 3;1.294896602;103.7739567
+477;Computational Biology Research Lab 2;1.294896602;103.7739567
+478;Computational Biology Research Lab 1;1.294896602;103.7739567
+479;Artificial Intelligence Lab 3;1.294896602;103.7739567
+480;Artificial Intelligence Lab 2;1.294896602;103.7739567
+481;Artificial Intelligence Lab 1;1.294896602;103.7739567
+482;The Deck Stalls @ Level 1;1.294840948;103.7725499
+483;Sapore Italiano;1.2944584883509;103.77117438215
+484;Indonesian Express;1.2944584883509;103.77117438215
+485;Humble Origins CafÃ©;1.294797617;103.7712067
+486;Humble Origins CafÃ©;1.294797617;103.7712067
+487;Techno Edge;1.297987292;103.7715729
+488;McDonald's Restaurant;1.29803;103.77115
+489;Good News CafÃ©;1.29807;103.77115
+490;Dilys Creation;1.298474249;103.7722897
+491;Frontier;1.296741111;103.7803196
+492;Dilys Creation;1.296741111;103.7803196
+493;Reedz CafÃ©;1.292647709;103.7739452
+494;The Terrace;1.294489332;103.7744594
+495;Alcove - Asian Restaurant Bar;1.301728637;103.7721489
+496;Spinelli;1.297293242;103.7779172
+497;Starbucks;1.298660133;103.7748909
+498;Food Junction @ Central Square;1.298660133;103.7748909
+499;Old Chang Kee (Halal);1.298660133;103.7748909
+500;Sarpinoâ€™s Express;1.298660133;103.7748909
+501;7-11 Convenience Store;1.298660133;103.7748909
+502;The Royals Bistro Cafe;1.3038798233982325;103.77428998079723
+503;Koufu Foodcourt;1.303998295;103.7742283
+504;Cheers Convenience Store;1.303998295;103.7742283
+505;Hwang's Korean Restaurant;1.303998295;103.7742283
+506;Starbucks;1.306292732;103.7728598
+507;Lecture Theatre 1;1.299594566;103.7713447
+508;Lecture Theatre 2;1.299233839;103.7715116
+509;Lecture Theatre 3;1.297665586;103.7733634
+510;Lecture Theatre 4;1.297514593;103.7734884
+511;Lecture Theatre 5;1.298444948;103.7713869
+512;Lecture Theatre 6;1.298663473;103.7719288
+513;Lecture Theatre 7;1.30004309;103.7710779
+514;Lecture Theatre 7A;1.30051;103.77094
+515;Lecture Theatre 8;1.294224058;103.7720252
+516;Lecture Theatre 9;1.29502;103.77229
+517;Lecture Theatre 10;1.294954486;103.772089
+518;Lecture Theatre 11;1.295575165;103.7715301
+519;Lecture Theatre 12;1.295050553;103.7712468
+520;Lecture Theatre 13;1.295142762;103.7710467
+521;Lecture Theatre 14;1.295735527;103.7733935
+522;Lecture Theatre 15;1.295500528;103.773356
+523;Lecture Theatre 16;1.294099495;103.7740487
+524;Lecture Theatre 17;1.293797418;103.7741155
+525;Lecture Theatre 18;1.293655039;103.7746576
+526;Lecture Theatre 19;1.293982258;103.7745824
+527;Lecture Theatre 20;1.295847339;103.7789753
+528;Lecture Theatre 21;1.295528688;103.7795591
+529;Lecture Theatre 22;1.295847735;103.7797924
+530;Lecture Theatre 23;1.296418375;103.7799339
+531;Lecture Theatre 24;1.295797685;103.7804761
+532;Lecture Theatre 25;1.296213133;103.780601
+533;Lecture Theatre 26;1.29649;103.78105
+534;Lecture Theatre 27;1.296750354;103.7809342
+535;Lecture Theatre 28;1.296989566;103.7809841
+536;Lecture Theatre 29;1.29721625;103.7812342
+537;Lecture Theatre 31;1.296787843;103.780434
+538;Lecture Theatre 32;1.296220139;103.7784334
+539;Lecture Theatre 33;1.297731826;103.7809256
+540;Lecture Theatre 34;1.297694011;103.7808778
+541;Ngee Ann Kongsi Auditorium;1.305566971;103.7731269
+542;Eusoff Hall;1.293282767;103.7702482
+543;Extension A;1.298029314;103.7767474
+544;Kent Ridge Hall;1.291926111;103.774542
+545;King Edward VII Hall;1.292520114;103.7808893
+546;Kuok Foundation House;1.300311118;103.7736778
+547;Prince George's Park Residences;1.290992919;103.7812283
+548;Raffles Hall;1.299872783;103.7738292
+549;Ridge View Residential College;1.298209629;103.7760838
+550;Ridge View Tower Block;1.298029314;103.7767474
+551;Sheares Hall;1.291074195;103.7756714
+552;Temasek Hall;1.292903596;103.7713867
+553;Former Visitor's Lodge;1.298595563;103.7734108
+554;Residential College 4;1.30821;103.77341
+555;Angsana College;1.30763;103.77315
+556;UTown Residence;1.30550204;103.7737984
+557;Cinnamon College;1.306769048;103.7735685
+558;Tembusu College Office;1.30625;103.77368
+559;25 Heng Mui Keng Terrace;1.29216429;103.7765431
+560;Angel's Restaurant;1.299035682;103.7755435
+561;Archery Corner / Volleyball Courts;1.300228618;103.7770593
+562;Architecture Branch;1.297432799;103.770836
+563;AS1;1.295328032;103.772364
+564;AS2;1.295333899;103.7710991
+565;AS3;1.294763398;103.7713495
+566;AS4;1.294723667;103.7720058
+567;AS5;1.294396443;103.7720976
+568;AS6;1.295462739;103.7732727
+569;AS7;1.294620653;103.7711662
+570;Basketball Courts;1.299942304;103.7772311
+571;Bioinformatics Institute;1.294624596;103.7807369
+572;Block ADM;1.296236378;103.7723875
+573;BIZ1;1.2926767494159774;103.77390985587917
+574;Brenner Centre for Molecular Medicine;1.294850141;103.7806792
+575;CafeUni;1.299298814;103.7712247
+576;Central Library Annexe;1.296732529;103.7737979
+577;Central Square;1.298410586;103.7745539
+578;Centre for Biomedical Materials Applications and Technology E3;1.299266085;103.7719004
+579;Centre for Information Technology and Applications;1.298593947;103.7712667
+580;Centre for Real Estate Studies;1.297432799;103.770836
+581;Centre for Soft Ground Engineering (CSGE);1.298593947;103.7712667
+582;Chinese Library;1.29701;103.77336
+583;Coffee Club Xpress (Faculty of Arts and Social Sciences);1.294797617;103.7712067
+584;Computing (Dean's Office);1.294896602;103.7739567
+585;Cool Station;1.296540239;103.780284
+586;Data Storage Institute;1.299434919;103.7730158
+587;Dental Centre;1.294368175;103.7838447
+588;Department of Community, Occupational and Family Medicine;1.295474916;103.7811183
+589;Department of Paediatrics (PAEDIATRICS);1.29497624;103.7831274
+590;Department of Pharmacy (Annexe);1.295770008;103.7792353
+591;Design and Environment (Dean's Office);1.297432799;103.770836
+592;Design Technology Institute Ltd;1.298298707;103.7726502
+593;Division of Research and Graduate Studies, School of Computing (Interim Cluster);1.296991057;103.7800203
+594;Division of Research and Graduate Studies;1.293340753;103.7755249
+595;Dome CafÃ©;1.301728637;103.7721489
+596;DSO @ Kent Ridge;1.296333131;103.7813558
+597;E1;1.298593947;103.7712667
+598;E1A;1.299504365;103.7708178
+599;E2;1.299298814;103.7712247
+600;E3A;1.300301927;103.7715678
+601;E4;1.298298707;103.7726502
+602;E5;1.297969561;103.7725819
+603;EA;1.300221771;103.7706257
+604;EW1;1.298434345;103.7709333
+605;EW2;1.298951398;103.7726398
+606;E4A;1.298557053;103.7727567
+607;Econometric Studies Unit;1.295142762;103.7710467
+608;Energy Sustainability Unit;1.297432799;103.770836
+609;Engineering (Dean's Office);1.300016076;103.7704674
+610;Engineering Block;1.297969561;103.7725819
+611;Engineering Workshop 1;1.298434345;103.7709333
+612;Engineering Workshop 2;1.29971937;103.7721919
+613;Football Field;1.298588069;103.7782826
+614;Forum Branch;1.296261755;103.7730289
+615;Frontier;1.296565201;103.780617
+616;Genome Institute of Singapore;1.302749774;103.7921781
+617;Hon Sui Sen Memorial Library;1.293081017;103.7746998
+618;Human Resource Management Unit, NUS Business School;1.2923500206640306;103.77419127901307
+619;Incubation Centre, School of Computing (Interim Cluster);1.296991057;103.7800203
+620;Information Technology Unit, School of Computing;1.2934913260348535;103.77436166078216
+621;Institute for Infocomm Research;1.292429487;103.7755195
+622;Institute of Chemical and Engineering Sciences (CHBE);1.296333131;103.7813558
+623;Institute of Engineering Science (IES);1.300385691;103.7712593
+624;Institute of High Performance Computing (IHPC);1.289261152;103.7787588
+625;Institute of Materials Research and Engineering;1.294475649;103.7758364
+626;Institute of Microelectronics (IME);1.289888771;103.77945
+627;Institute of South East Asian Studies (ISEAS);1.291451409;103.7768111
+628;Integrative Sciences and Engineering;1.294624596;103.7807369
+629;Jasmine;1.290770823;103.7800995
+630;Kent Vale Carpark;1.301937293;103.7698935
+631;Lavazza;1.299035682;103.7755435
+632;Lee Kong Chian Atrium;1.297293242;103.7779172
+633;Lee Kong Chian Wing, University Hall;1.297293218;103.7779172
+634;Lee Wee Kheng Building, S1A;1.295945965;103.7783711
+635;Linger Cafe;1.30017579;103.7757383
+636;LT27 Branch;1.296750354;103.7809342
+637;Maternal and Child Health/Family Planning Services, Research and Training;1.29497624;103.7831274
+638;MD1 (U/C);1.295290157;103.7808182
+639;MD2;1.29508055;103.7811935
+640;MD3;1.295474916;103.7811183
+641;MD4;1.295802154;103.7810514
+642;MD5;1.295752011;103.7814766
+643;MD6;1.295508809;103.7817936
+644;MD7;1.296213308;103.7809845
+645;MD9;1.296733745;103.7813177
+646;MD10;1.296616429;103.7816596
+647;Science Library;1.295306079;103.7801893
+648;Medicine (Dean's Office);1.296616429;103.7816596
+649;Multi-purpose Courts;1.299628368;103.7777651
+650;Multi-purpose Fields;1.297748926;103.7793752
+651;Multi-purpose Sports Hall 1;1.300528365;103.7760966
+652;Multi-purpose Sports Hall 2;1.300528365;103.7760966
+653;Multi-purpose Sports Hall 3;1.300528365;103.7760966
+654;Multi-purpose Sports Hall 4;1.300528365;103.7760966
+655;Multi-purpose Sports Hall 5;1.300259916;103.7761218
+656;Multi-purpose Sports Hall 6;1.30017579;103.7757383
+657;Music Library;1.302178441;103.7729161
+658;National University Hospital (NUH);1.29497624;103.7831274
+659;Ng Eng Teng Gallery;1.295116203;103.7804736
+660;NUS Business School (Dean's Office);1.293655617;103.7742993
+661;NUS Multi-Purpose Co-operative Society Ltd;1.296519046;103.7810392
+662;NUS Nanoscience and Nanotechnology Institute (NUSNNI);1.299284384;103.7719285
+663;College of Alice and Peter Tan;1.3076437749312;103.773030073
+664;Mochtar Riady Building;1.293655617;103.7742993
+665;Office of the President;1.297293242;103.7779172
+666;PC Centre;1.295500528;103.773356
+667;PGP;1.290770823;103.7800995
+668;Research Centre for Nuclear Microscopy;1.296363215;103.7787166
+669;Research Centre of Excellence in Mechanobiology;1.29971937;103.7721919
+670;School of Business;1.293635134;103.7743163
+671;Science (Dean's Office);1.296540239;103.780284
+672;SDE1;1.297569982;103.7708586
+673;SDE2;1.297469467;103.7712339
+674;SDE3;1.298471915;103.7704265
+675;Sepak Takraw;1.300362781;103.7768508
+676;Shaw Foundation Building;1.294332753;103.7712164
+677;Singapore-MIT Alliance;1.298298707;103.7726502
+678;Singapore Wind Tunnel Facility;1.300791206;103.7753296
+679;SOC1;1.297692127;103.7804485
+680;South and Southeast Asian Art Gallery;1.295116203;103.7804736
+681;South Asian Studies Programme;1.294620653;103.7711662
+682;Sports Fields;1.298346997;103.779234
+683;Swimming Pool;1.299869444;103.7757719
+684;Tan Chin Tuan Wing, University Hall;1.297293242;103.7779172
+685;Temasek Defence Systems Institute;1.298847;103.771135
+686;Temasek Life Sciences Laboratory;1.294472675;103.7771379
+687;Science (Dean's Office);1.296540239;103.780284
+688;The Bean Factory;1.298410586;103.7745539
+689;The Deck;1.294855188;103.7725947
+690;The Pavilion;1.300016076;103.7704674
+691;University Cultural Centre;1.301728637;103.7721489
+692;WHO Collaborating Centres;1.297276366;103.7778255
+693;Wintaste;1.290770823;103.7800995
+694;Yusof Ishak House (YIH);1.298410586;103.7745539
+695;University Town;1.306292732;103.7728598
+696;Chua Thian Poh Hall;1.307027178;103.773293
+697;Tembusu Multi-purpose Hall;1.305980218;103.7738232
+698;Create Tower;1.304093428;103.7734645
+699;Affiliated Institutes;1.297276366;103.7778255
+700;Kent Vale;1.301384622;103.7681933
+701;Meeting Room 1 (MR 1);1.294896602;103.7739567
+702;Meeting Room 2 (MR 2);1.294896602;103.7739567
+703;Meeting Room 3 (MR 3);1.294896602;103.7739567
+704;Meeting Room 4 (MR 4);1.294896602;103.7739567
+705;Meeting Room 5 (MR 5);1.294896602;103.7739567
+706;Tropical Marine Science Institute (TMSI);1.29763;103.77483
+707;The Logistics Institute - Asia Pacific;1.29251;103.77565
+708;Temasek Laboratories (TL@NUS);1.299937963;103.7721526
+709;Solar Energy Research Institute of Singapore (SERIS);1.300156943;103.7714779
+710;Singapore Synchrotron Light Source (SSLS);1.295589525;103.7751543
+711;Singapore Centre on Environmental Life Sciences Engineering (SCELSE);1.344797529;103.6791777
+712;Risk Management Institute (RMI);1.292509295;103.7756529
+713;NUS Nanoscience and Nanotechnology Institute (NanoCore);1.299937963;103.7721526
+714;NUS Global Asia Institute (GAI);1.29769;103.78047
+715;NUS Global Asia Institute (GAI);1.29769;103.78047
+716;NUS Environmental Research Institute (NERI);1.299937963;103.7721526
+717;Middle East Institute (MEI);1.2906165599764;103.77770968983
+718;Mechanobiology Institute, Singapore (MI);1.299937963;103.7721526
+719;Life Sciences Institute (LSI);1.294590927;103.7806202
+720;Interactive and Digital Media Institute (IDMI);1.292509295;103.7756529
+721;Institute of Systems Science;1.2920930425045065;103.7765681398359
+722;Institute of South Asian Studies (ISAS);1.2906165599764;103.77770968983
+723;Institute for Mathematical Sciences;1.292851966;103.7796155
+724;Graphene Centre;1.29693;103.77973
+725;Energy Studies Institute (ESI);1.29061;103.7777
+726;Centre for Remote Imaging, Sensing and Processing (CRISP);1.29768;103.78043
+727;University Town Management Office;1.304160992;103.774294
+728;Office of the Vice President (University and Global Relations);1.297293242;103.7779172
+729;Office of the Vice President (Campus Infrastructure);1.2954969573057;103.77030002108
+730;NUS Press;1.2947891960707;103.77125936615
+731;Board of Trustees Secretariat;1.297293242;103.7779172
+732;NUS Students' Union Secretariat;1.29858274;103.7751041
+733;SINAPSE Institute;1.294569924;103.7806202
+734;Prince George's Park;1.2907708232837;103.78009949284
+735;Office of Campus Security;1.2924491554165;103.77958234367
+736;DBS/POSB ATM @ Frontier;1.2968;103.78096
+737;Dental Services;1.29497624;103.7831274
+738;Florist;1.296261755;103.7730289
+739;Handphone and CD shop;1.296261755;103.7730289
+740;IT Coop @ LT26;1.296519046;103.7810392
+741;Medical (University Health Service);1.298410586;103.7745539
+742;NUS Computer Coop;1.29759;103.77234
+743;NUS Coop Bookstore (LT27);1.296833897;103.7809587
+744;NUS Coop Bookstore;1.297432799;103.770836
+745;NUS Coop Notebook Service Centre;1.296348174;103.7810204
+746;Optical;1.296833897;103.7809587
+747;Pharmacy;1.296261755;103.7730289
+748;POSB ATM @ Central Library;1.29646;103.77301
+749;Postal and Telecommunication;1.298410586;103.7745539
+750;Security Post (Faculty of Engineering);1.300385691;103.7712593
+751;Security Post (Faculty of Science);1.296798124;103.7801705
+752;Security Post (School of Business);1.294778852;103.7735065
+753;Security Post (University Hall);1.297293242;103.7779172
+754;Taxi Booking Terminal (Faculty of Engineering);1.300385691;103.7712593
+755;Taxi Booking Terminal (Faculty of Science);1.296798124;103.7801705
+756;Former Visitor's Lodge;1.298595563;103.7734108
+757;Travel Agency;1.296833897;103.7809587
+758;University Logo Gift Shop;1.296261755;103.7730289
+759;Yusof Ishak House Sundry Shop;1.298410586;103.7745539
+760;Emergency Call Point (Near Engineering Auditorium);1.3005447454954588;103.77047546013277
+761;Emergency Call Point (Near School of Design and Environment);1.2978089896686227;103.77043513925334
+762;Emergency Call Point (Near football field);1.2997143272673757;103.77822450357523
+763;Emergency Call Point (Near Kent Ridge Hall);1.291851240609407;103.77389164898379
+764;Emergency Call Point (Along Prince George's Park);1.292060131249685;103.78308708818672
+765;Office of Environmental Sustainability;1.2954969573057;103.77030002108
+766;Medical Library;1.295340884;103.7814786
+767;Lecture Theatre 35;1.295509412;103.7818431
+768;UTown Auditorium 1;1.3041018478815;103.77352280878
+769;UTown Auditorium 2;1.3042534693714;103.77271487999
+770;UTown Auditorium 3;1.3072997422955;103.77312196402
+771;Lecture Theatre 36;1.2955094117378;103.78184310393
+772;Office of Facilities Management;1.2954969573057;103.77030002108
+773;Office of Campus Amenities;1.2954969573057;103.77030002108
+774;Office of Financial Aid;1.3047820152134;103.7724186303
+775;Humble Origins CafÃ©;1.2954969573057;103.77030002108
+776;Liang Ban Kung Fu;1.2944584883509;103.77117438215
+777;Lee Kong Chian Natural History Museum;1.3014987125042;103.77363491225
+778;Alice Lee Plaza;1.30247620545;103.77264084212
+779;NUS (Suzhou) Research Institute Liaison Office;1.2973435369045;103.7778546219
+780;Platypus Food Bar;1.2968402961616032;103.78026549939538
+781;Spice Table By Pines;1.3038798233982325;103.77428998079723
+782;COM2;1.293655617;103.7742993
+783;Central Procurement Office;1.2970875821558887;103.77768801555982
+784;Centre for Future-Ready Graduates;1.2985660205782101;103.77475806579105
+785;Resource Gallery;1.301786824;103.7716656
+786;The USP Writing Centre;1.30651;103.773593
+787;Spin and Energy Laboratory (SEL);1.298676275;103.7725458
+788;The QR Centre;1.30651;103.773593
+789;Runme Shaw CFA Studios;1.299185;103.773638
+790;Resource Library;1.301786824;103.7716656
+791;Conservation Corridor and Studio;1.301786824;103.7716656
+792;NX1 Gallery;1.301786824;103.7716656
+793;NX2 Gallery;1.301786824;103.7716656
+794;Celadon Room;1.301786824;103.7716656
+795;Lee Kong Chian Gallery;1.301786824;103.7716656
+796;NX Gallery 3;1.301786824;103.7716656
+797;ST Lee Atrium;1.301786824;103.7716656
+798;NUSS Guild House;1.294003;103.7726876
+799;Office of the Deputy President (Research and Technology);1.297293242;103.7779172
+800;University Level Teaching Units;1.297113;103.771555
+801;Butter My Buns;1.3048152791977248;103.7725229865247
+802;Pizza Hut Express;1.3048152791977248;103.7725229865247
+803;Dilys Creation (MD6);1.2953641682904917;103.78170689346067
+804;Waa Cow;1.2937588732147773;103.77346534185185
+805;Des The Place;1.2989338491903983;103.77147846492223
+806;A.R.T Food House;1.299385897393285;103.77121745776053
+807;Platypus Foodbar Capsule;1.2989249981998332;103.77147592343819
+808;Subway;1.2986539805359862;103.7746871544679
+809;Subway Mobile Cart;1.2962130870707607;103.78071225468466
+810;The University Club;1.2938351697335033;103.77342326945919
+811;E-Canteen;1.29090631418359;103.78207599790895
+812;Pines Food Court;1.2910225513936924;103.78144606030183
+813;Supersnacks;1.291215227251336;103.78052045101848
+814;Route 77;1.2910225513936924;103.78144606030183
+815;Nanyang Mart;1.2910225513936924;103.78144606030183
+816;Flavours@UTown;1.304782047245892;103.77253536676778
+817;Fortune Village;1.304782047245892;103.77253536676778
+818;Guardian;1.304782047245892;103.77253536676778
+819;Bookhaven;1.304782047245892;103.77253536676778
+820;Hair Infinity;1.304782047245892;103.77253536676778
+821;FairpriceXpress;1.304782047245892;103.77253536676778
+822;Starbucks;1.2961466750978465;103.78181493935557
+823;Humble Origins CafÃ©;1.2954969573057;103.77030002108
+824;School of Continuing and Lifelong Education (SCALE);1.3059629261874;103.77268513518

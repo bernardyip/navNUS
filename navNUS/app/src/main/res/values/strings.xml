@@ -1,0 +1,12 @@
+<resources>
+    <!--General-->
+    <string name="app_name">navNUS</string>
+
+    <!--Menu-->
+    <string name="action_settings">Settings</string>
+
+    <!--activity_main-->
+    <string name="main_activity_textbox_search_tooltip">(From) to (Destination)</string>
+    <string name="main_activity_button_search_text">Search</string>
+    <string name="main_activity_debug_text">Debug:</string>
+</resources>
