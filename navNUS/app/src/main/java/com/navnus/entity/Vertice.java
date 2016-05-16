@@ -6,18 +6,16 @@ package com.navnus.entity;
 public class Vertice {
     public int id;
     public String name;
-    public double latitude;
-    public double longitude;
+    public GeoCoordinate coordinate;
 
     public Vertice(int id, String name, double latitude, double longitude) {
         this.id = id;
         this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.coordinate = new GeoCoordinate(latitude, longitude);
     }
 
     @Override
     public String toString() {
-        return id + " : " + name + " (" + latitude + ", " + longitude + ")";
+        return id + " : " + name + " (" + coordinate.latitude + ", " + coordinate.longitude + ")";
     }
 }
