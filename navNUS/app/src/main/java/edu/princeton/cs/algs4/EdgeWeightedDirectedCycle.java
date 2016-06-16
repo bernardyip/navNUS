@@ -1,3 +1,7 @@
+package edu.princeton.cs.algs4;
+
+import java.util.Stack;
+
 /******************************************************************************
  *  Compilation:  javac EdgeWeightedDirectedCycle.java
  *  Execution:    java EdgeWeightedDirectedCycle V E F
@@ -8,10 +12,6 @@
  *
  *
  ******************************************************************************/
-
-package edu.princeton.cs.algs4;
-
-import java.util.Stack;
 
 /**
  *  The <tt>EdgeWeightedDirectedCycle</tt> class represents a data type for 
@@ -70,7 +70,7 @@ public class EdgeWeightedDirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-                //found new vertex, so recur
+            //found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = e;
                 dfs(G, w);
@@ -138,6 +138,7 @@ public class EdgeWeightedDirectedCycle {
 
         return true;
     }
+
 }
 
 /******************************************************************************

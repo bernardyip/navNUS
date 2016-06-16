@@ -1,3 +1,11 @@
+package edu.princeton.cs.algs4;
+
+import com.navnus.entity.GeoCoordinate;
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /******************************************************************************
  *  Compilation:  javac DirectedEdge.java
  *  Execution:    java DirectedEdge
@@ -7,7 +15,6 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
 /**
  *  The <tt>DirectedEdge</tt> class represents a weighted edge in an
  *  {@link EdgeWeightedDigraph}. Each edge consists of two integers
@@ -22,10 +29,14 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 
-public class DirectedEdge {
-    private final int v;
-    private final int w;
+public class DirectedEdge implements Serializable {
+    private final int from;
+    private final int to;
     private final double weight;
+    public final LinkedList<GeoCoordinate> coordinates;
+    
+    //add
+    public LinkedList<String> description;
 
     /**
      * Initializes a directed edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
@@ -37,13 +48,33 @@ public class DirectedEdge {
      *    is a negative integer
      * @throws IllegalArgumentException if <tt>weight</tt> is <tt>NaN</tt>
      */
-    public DirectedEdge(int v, int w, double weight) {
+    public DirectedEdge(int v, int w, double weight, LinkedList<String> description, LinkedList<GeoCoordinate> coordinates) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
         if (w < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
         if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
-        this.v = v;
-        this.w = w;
+        this.from = v;
+        this.to = w;
         this.weight = weight;
+        this.description = description;
+        this.coordinates = coordinates;
+    }
+    
+    public DirectedEdge(String dataString) {
+    	String[] data = dataString.split(";");
+    	from = Integer.parseInt(data[0]);
+    	to = Integer.parseInt(data[1]);;
+    	weight = Double.parseDouble(data[2]);
+    	description = new LinkedList<String>(); 
+    	for (String desc : data[3].split("--next--")) {
+    		description.add(desc);
+    	}
+    	coordinates = new LinkedList<GeoCoordinate>();
+    	for (String geoData : data[4].split("--next--")) {
+    		String[] geo = geoData.split(",");
+    		double lat = Double.parseDouble(geo[0]);
+    		double lon = Double.parseDouble(geo[1]);
+    		coordinates.add(new GeoCoordinate(lat, lon));
+    	}
     }
 
     /**
@@ -51,7 +82,7 @@ public class DirectedEdge {
      * @return the tail vertex of the directed edge
      */
     public int from() {
-        return v;
+        return from;
     }
 
     /**
@@ -59,7 +90,7 @@ public class DirectedEdge {
      * @return the head vertex of the directed edge
      */
     public int to() {
-        return w;
+        return to;
     }
 
     /**
@@ -75,7 +106,29 @@ public class DirectedEdge {
      * @return a string representation of the directed edge
      */
     public String toString() {
-        return v + "->" + w + " " + String.format("%5.2f", weight);
+        //Description & Coordinates are list, have to manually split them up for output
+    	//Description
+    	StringBuffer descriptionList = new StringBuffer();
+    	for (String description : this.description) {
+    		descriptionList.append(description);
+    		descriptionList.append("--next--");
+    	}
+    	if (descriptionList.lastIndexOf("--next--") == descriptionList.length()-8) {
+    		descriptionList.delete(descriptionList.length()-8, descriptionList.length());
+    	}
+
+    	//Coordinates
+    	StringBuffer coordinateList = new StringBuffer();
+    	for (GeoCoordinate coordinate : coordinates) {
+    		coordinateList.append(coordinate);
+    		coordinateList.append("--next--");
+    	}
+    	if (coordinateList.lastIndexOf("--next--") == coordinateList.length()-8) {
+    		coordinateList.delete(coordinateList.length()-8, coordinateList.length());
+    	}
+    	
+    	//return from + "->" + to + " " + String.format("(%.2f)", weight) + description + " " + coordinates;
+        return from + ";" + to + ";" + String.format("%.2f", weight) + ";" + descriptionList + ";" + coordinateList;
     }
 
 }

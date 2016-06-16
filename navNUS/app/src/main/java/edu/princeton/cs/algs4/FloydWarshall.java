@@ -1,3 +1,10 @@
+package edu.princeton.cs.algs4;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.LinkedList;
+
 /******************************************************************************
  *  Compilation:  javac FloydWarshall.java
  *  Execution:    java FloydWarshall V E
@@ -14,10 +21,6 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
-
-
-import java.util.Stack;
 
 /**
  *  The <tt>FloydWarshall</tt> class represents a data type for solving the
@@ -41,8 +44,8 @@ import java.util.Stack;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class FloydWarshall {
-    private boolean hasNegativeCycle;  // is there a negative cycle?
+public class FloydWarshall implements Serializable {
+	private boolean hasNegativeCycle;  // is there a negative cycle?
     private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
     private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
 
@@ -164,54 +167,10 @@ public class FloydWarshall {
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPath(s, t)) return null;
-        Stack<DirectedEdge> path = new Stack<DirectedEdge>();
+        LinkedList<DirectedEdge> path = new LinkedList<DirectedEdge>();
         for (DirectedEdge e = edgeTo[s][t]; e != null; e = edgeTo[s][e.from()]) {
             path.push(e);
         }
         return path;
     }
-
-    // check optimality conditions
-    private boolean check(EdgeWeightedDigraph G, int s) {
-
-        // no negative cycle
-        if (!hasNegativeCycle()) {
-            for (int v = 0; v < G.V(); v++) {
-                for (DirectedEdge e : G.adj(v)) {
-                    int w = e.to();
-                    for (int i = 0; i < G.V(); i++) {
-                        if (distTo[i][w] > distTo[i][v] + e.weight()) {
-                            System.err.println("edge " + e + " is eligible");
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
 }
-
-/******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

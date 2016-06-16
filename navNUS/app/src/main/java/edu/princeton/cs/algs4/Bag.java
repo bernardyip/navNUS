@@ -108,7 +108,7 @@ public class Bag<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this bag in arbitrary order
      */
     public Iterator<Item> iterator()  {
-        return new ListIterator<Item>(first);
+        return new ListIterator<Item>(first);  
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -125,10 +125,12 @@ public class Bag<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next;
+            current = current.next; 
             return item;
         }
     }
+
+
 }
 
 /******************************************************************************

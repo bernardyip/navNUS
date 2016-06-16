@@ -2,14 +2,11 @@ package com.navnus.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import com.navnus.R;
 import com.navnus.entity.Map;
-import com.navnus.entity.Vertice;
 
 import java.text.DecimalFormat;
 
@@ -50,12 +47,8 @@ public class MainActivity extends AppCompatActivity {
         /** The system calls this to perform work in a worker thread and
          * delivers it the parameters given to AsyncTask.execute() */
         protected String doInBackground(Void... Result) {
-            StringBuffer vertices = new StringBuffer();
-            for (int i=0; i<Map.vertices.length; i++) {
-                vertices.append(Map.vertices[i].toString() + "\n");
-                publishProgress(i);
-            }
-            return vertices.toString();
+            //publishProgress(i);
+            return "";
         }
 
         @Override
