@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.navnus.R;
 import com.navnus.entity.Map;
@@ -18,21 +19,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Load map data
-        Map.initialize();
-        Map.loadVertices(this);
-
+        Map.initialize(this);
     }
 
     //Testing button click
     public void button_search_click(View view) {
-        /*
+
         //Testing debugging code
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
-        String input = ((EditText)findViewById(R.id.edittext_search)).getText().toString();
-        debugText.setText(input);
-        */
+        //String input = ((EditText)findViewById(R.id.edittext_search)).getText().toString();
+        debugText.setText(String.valueOf(Map.graph.dist(93, 97)));
 
-        (new ConsolidateVertices()).execute(null, null, null);
+
+        //(new ConsolidateVertices()).execute(null, null, null);
 
     }
 

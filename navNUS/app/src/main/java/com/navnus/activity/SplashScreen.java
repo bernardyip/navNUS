@@ -22,7 +22,6 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

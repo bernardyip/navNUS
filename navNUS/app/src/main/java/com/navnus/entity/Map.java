@@ -1,20 +1,10 @@
 package com.navnus.entity;
 
 import android.content.Context;
-
 import com.navnus.utility.Util;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
+import com.navnus.entity.Vertex;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Stack;
-
-import edu.princeton.cs.algs4.DirectedEdge;
-import edu.princeton.cs.algs4.EdgeWeightedDigraph;
 import edu.princeton.cs.algs4.FloydWarshall;
 
 /**
@@ -24,8 +14,9 @@ public class Map {
     public static FloydWarshall graph;
     public static LinkedList<Vertex> vertices;
 
-    public static void initialize() {
-
+    public static void initialize(Context context) {
+        loadVertices(context);
+        loadFloydWarshall(context);
     }
 
     public static void loadVertices(Context context) {
