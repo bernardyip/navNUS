@@ -1,6 +1,5 @@
 package com.navnus.entity;
 
-import com.navnus.entity.GeoCoordinate;
 import java.io.Serializable;
 
 public class Vertex implements Serializable {

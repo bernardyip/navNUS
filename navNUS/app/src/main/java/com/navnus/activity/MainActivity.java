@@ -10,6 +10,9 @@ import com.navnus.R;
 import com.navnus.entity.Map;
 
 import java.text.DecimalFormat;
+import java.util.LinkedList;
+
+import edu.princeton.cs.algs4.DirectedEdge;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
         //Testing debugging code
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
         //String input = ((EditText)findViewById(R.id.edittext_search)).getText().toString();
-        debugText.setText(String.valueOf(Map.graph.dist(93, 97)));
+        Iterable<DirectedEdge> path = Map.graph.path(93, 97);
+        StringBuffer pathString = new StringBuffer();
+        for (DirectedEdge edge : path) {
+            pathString.append(edge.from() + "->" + edge.to() + "\n");
+        }
+        debugText.setText(pathString);
 
 
         //(new ConsolidateVertices()).execute(null, null, null);

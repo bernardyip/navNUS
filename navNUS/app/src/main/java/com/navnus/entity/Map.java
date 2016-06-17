@@ -1,9 +1,15 @@
 package com.navnus.entity;
 
 import android.content.Context;
-import com.navnus.utility.Util;
-import com.navnus.entity.Vertex;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collection;
 import java.util.LinkedList;
 import edu.princeton.cs.algs4.FloydWarshall;
 
@@ -21,8 +27,19 @@ public class Map {
 
     public static void loadVertices(Context context) {
         try {
-            InputStream is = context.getAssets().open("vertices");
-            vertices = (LinkedList<Vertex>) Util.readSerializable(is);
+            //Read the data
+            StringBuilder data = new StringBuilder();
+            InputStream json = context.getAssets().open("vertices");
+            BufferedReader in = new BufferedReader(new InputStreamReader(json));
+            String line;
+            while ((line=in.readLine()) != null) {
+                data.append(line);
+            }
+            in.close();
+
+            //Convert to object
+            Gson gson = new Gson();
+            vertices = gson.fromJson(data.toString(), new TypeToken<Collection<Vertex>>(){}.getType());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,8 +47,19 @@ public class Map {
 
     public static void loadFloydWarshall(Context context) {
         try {
-            InputStream is = context.getAssets().open("floydwarshall");
-            graph = (FloydWarshall) Util.readSerializable(is);
+            //Read the data
+            StringBuilder data = new StringBuilder();
+            InputStream json = context.getAssets().open("floydwarshall");
+            BufferedReader in = new BufferedReader(new InputStreamReader(json));
+            String line;
+            while ((line=in.readLine()) != null) {
+                data.append(line);
+            }
+            in.close();
+
+            //Convert to object
+            Gson gson = new Gson();
+            graph = gson.fromJson(data.toString(), FloydWarshall.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
