@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
+
 import edu.princeton.cs.algs4.FloydWarshall;
 
 /**
@@ -39,7 +41,7 @@ public class Map {
 
             //Convert to object
             Gson gson = new Gson();
-            vertices = gson.fromJson(data.toString(), new TypeToken<Collection<Vertex>>(){}.getType());
+            vertices = gson.fromJson(data.toString(), new TypeToken<List<Vertex>>(){}.getType());
         } catch (Exception e) {
             e.printStackTrace();
         }

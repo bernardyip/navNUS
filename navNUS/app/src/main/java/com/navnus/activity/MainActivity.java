@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.navnus.R;
 import com.navnus.entity.Map;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 import edu.princeton.cs.algs4.DirectedEdge;
@@ -22,7 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Load map data
+        Calendar c = Calendar.getInstance();
+        long seconds = c.get(Calendar.MILLISECOND);
         Map.initialize(this);
+        Toast.makeText(this, Long.toString(c.get(Calendar.MILLISECOND) - seconds), Toast.LENGTH_LONG).show();
+        System.out.println(Long.toString(c.get(Calendar.MILLISECOND) - seconds));
     }
 
     //Testing button click
