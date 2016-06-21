@@ -6,7 +6,10 @@
     <string name="action_settings">Settings</string>
 
     <!--activity_main-->
+    <string name="main_activity_title">Navigate</string>
     <string name="main_activity_textbox_search_tooltip">(From) to (Destination)</string>
+    <string name="main_activity_from">(From)</string>
+    <string name="main_activity_to">(Destination)</string>
     <string name="main_activity_button_search_text">Search</string>
     <string name="main_activity_debug_text">Debug:</string>
 </resources>

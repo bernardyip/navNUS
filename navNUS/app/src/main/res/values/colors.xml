@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="list_normal">#FFFFFF</drawable>
+    <drawable name="list_active">#0062A9</drawable>
+    <drawable name="list_pressed">#0090D5</drawable>
+</resources> 

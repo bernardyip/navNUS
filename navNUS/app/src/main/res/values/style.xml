@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="cust_dialog" parent="@android:style/Theme.Dialog">
+    <item name="android:windowTitleStyle">@style/dialog_title_style</item>
+  </style>
+
+<style name="dialog_title_style" parent="android:Widget.TextView">
+    <item name="android:background">@android:color/white</item>
+    <item name="android:padding">16dp</item>
+    <item name="android:textColor">#000000</item>
+    <item name="android:textSize">22sp</item>
+    <item name="android:textStyle">bold</item>
+</style>
+
+  <style name="Theme.CustomDialog" parent="@android:style/Theme.Translucent.NoTitleBar">
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:background">#ff90ff90</item>
+  </style>
+    
+    
+</resources>

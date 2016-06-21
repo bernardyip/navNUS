@@ -1,10 +1,14 @@
 package com.navnus.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +17,6 @@ import com.navnus.entity.Map;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.LinkedList;
 
 import edu.princeton.cs.algs4.DirectedEdge;
 
@@ -83,5 +86,33 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             setDebugText(result);
         }
+    }
+
+    //Overwrite "back" button on android phones to prompt exit app
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Dialog retDialog = new AlertDialog.Builder(this)
+                    .setTitle("Confirm Exit ?")
+                    .setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    //Exit app
+                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                                    intent.addCategory(Intent.CATEGORY_HOME);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            })
+                    .setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).show();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
