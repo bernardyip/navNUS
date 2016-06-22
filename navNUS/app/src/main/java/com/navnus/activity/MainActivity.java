@@ -48,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
             toId = Integer.parseInt(to);
 
             //Hack to go to navigation
-            if (fromId == 1 && toId == 1) {
+            if (fromId == 547 && toId == 27) {
                 Intent intent = new Intent();
+                intent.putExtra("from", fromId);
+                intent.putExtra("to", toId);
                 intent.setClass(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
             }
