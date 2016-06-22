@@ -1,8 +1,5 @@
 package edu.princeton.cs.algs4;
-
 import java.util.Stack;
-import edu.princeton.cs.algs4.Bag;
-import edu.princeton.cs.algs4.DirectedEdge;
 
 /******************************************************************************
  *  Compilation:  javac EdgeWeightedDigraph.java

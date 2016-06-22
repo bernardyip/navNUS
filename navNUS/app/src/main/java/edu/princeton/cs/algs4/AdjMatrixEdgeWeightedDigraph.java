@@ -1,3 +1,4 @@
+package edu.princeton.cs.algs4;
 /******************************************************************************
  *  Compilation:  javac AdjMatrixEdgeWeightedDigraph.java
  *  Execution:    java AdjMatrixEdgeWeightedDigraph V E
@@ -7,8 +8,6 @@
  *  Parallel edges are disallowed; self-loops are allowed.
  *  
  ******************************************************************************/
-
-package edu.princeton.cs.algs4;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -45,7 +44,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     /**
      * Initializes an empty edge-weighted digraph with <tt>V</tt> vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if <tt>V</tt> < 0
+     * @throws IllegalArgumentException if <tt>V</tt> < 0
      */
     public AdjMatrixEdgeWeightedDigraph(int V) {
         if (V < 0) throw new RuntimeException("Number of vertices must be nonnegative");
@@ -88,7 +87,7 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Returns the directed edges incident from vertex <tt>v</tt>.
      * @param v the vertex
      * @return the directed edges incident from vertex <tt>v</tt> as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<DirectedEdge> adj(int v) {
         return new AdjIterator(v);

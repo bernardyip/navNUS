@@ -1,5 +1,4 @@
 package com.navnus.entity;
-
 import java.io.Serializable;
 
 public class GeoCoordinate implements Serializable {

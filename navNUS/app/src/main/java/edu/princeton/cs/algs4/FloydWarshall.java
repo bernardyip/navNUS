@@ -1,7 +1,4 @@
 package edu.princeton.cs.algs4;
-
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -45,10 +42,10 @@ import java.util.LinkedList;
  *  @author Kevin Wayne
  */
 public class FloydWarshall implements Serializable {
-	private boolean hasNegativeCycle;  // is there a negative cycle?
-    private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
-    private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
-
+	public boolean hasNegativeCycle;  // is there a negative cycle?
+    public double[][] distTo;  // distTo[v][w] = length of shortest v->w path
+    public DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
+    
     /**
      * Computes a shortest paths tree from each vertex to to every other vertex in
      * the edge-weighted digraph <tt>G</tt>. If no such shortest path exists for
@@ -163,7 +160,7 @@ public class FloydWarshall implements Serializable {
      * as an iterable of edges, and <tt>null</tt> if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle
      */
-    public Iterable<DirectedEdge> path(int s, int t) {
+    public LinkedList<DirectedEdge> path(int s, int t) {
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPath(s, t)) return null;
@@ -173,4 +170,22 @@ public class FloydWarshall implements Serializable {
         }
         return path;
     }
+    
+    /*
+    public void saveDistToTable(String path) {
+    	StringBuffer data = new StringBuffer();
+    	for (int row=0; row<distTo.length; row++) {
+    		for (int column=0; column<distTo.length; column++) {
+    			data.append(distTo[row][column] + " ");
+    		}
+    		data.append("\r\n");
+    	}
+		try {
+			Files.write((new File(path)).toPath(), data.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    */
+
 }

@@ -1,3 +1,4 @@
+package edu.princeton.cs.algs4;
 /******************************************************************************
  *  Compilation:  javac Bag.java
  *  Execution:    java Bag < input.txt
@@ -26,8 +27,6 @@
  *  to
  *
  ******************************************************************************/
-
-package edu.princeton.cs.algs4;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
