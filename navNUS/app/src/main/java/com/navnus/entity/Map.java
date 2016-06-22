@@ -9,8 +9,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
+import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.FloydWarshall;
 
 /**
@@ -67,6 +69,10 @@ public class Map {
 
     public static Vertex getVertex(int id) {
         return vertices.get(id);
+    }
+
+    public static LinkedList<DirectedEdge> getPath(int src, int dest) {
+        return graph.path(src, dest);
     }
 
     /*

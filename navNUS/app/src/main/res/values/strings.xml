@@ -12,4 +12,5 @@
     <string name="main_activity_to">(Destination)</string>
     <string name="main_activity_button_search_text">Search</string>
     <string name="main_activity_debug_text">Debug:</string>
+    <string name="title_activity_maps">Navigation</string>
 </resources>

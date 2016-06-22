@@ -42,15 +42,24 @@ public class MainActivity extends AppCompatActivity {
         int fromId = -1;
         int toId = -1;
 
-        debugText.setText("");
         //Make sure from and to are id (for now)
         try {
             fromId = Integer.parseInt(from);
             toId = Integer.parseInt(to);
 
-            LinkedList<DirectedEdge> path = Map.graph.path(fromId, toId);
+            //Hack to go to navigation
+            if (fromId == 1 && toId == 1) {
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+
+
+            LinkedList<DirectedEdge> path = Map.getPath(fromId, toId);
             StringBuffer pathString = new StringBuffer();
-            if (path.size() > 1) {
+            if (path == null) {
+                pathString.append("No path exists!");
+            } else if (path.size() > 1) {
                 DirectedEdge sourceEdge = path.get(0);
                 pathString.append(Map.getVertex(sourceEdge.from()).name + " (" + Map.getVertex(sourceEdge.from()).id + ")\n");
                 for (DirectedEdge edge : path) {
@@ -65,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             debugText.setText(pathString);
         } catch (Exception e) {
             debugText.setText("Invalid ID!");
+            e.printStackTrace();
         }
 
         //Hide the keyboard if it is still there
