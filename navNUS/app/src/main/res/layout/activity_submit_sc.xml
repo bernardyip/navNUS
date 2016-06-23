@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF" >
+
+    <TextView
+        android:id="@+id/sctv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_submit_sc"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:textStyle="bold"
+        android:textColor="#0062A9"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/sctv"
+        android:background="#0062A9"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sctv"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        >
+
+        <Button
+            android:id="@+id/btn_record"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:text="@string/record"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:onClick="button_record_click"
+            android:enabled="true"/>
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:text="@string/stop"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:onClick="button_stop_click"
+            android:enabled="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        >
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:layout_marginStart="16dp"
+        android:maxLines = "10"
+        android:scrollbars = "vertical"
+        android:fadeScrollbars="false"
+        android:gravity="bottom"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        >
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:layout_width="0dip"
+        android:text="@string/submit"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp"
+        android:onClick="button_submit_click"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:layout_width="0dip"
+        android:text="@string/cancel"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp"
+        android:onClick="button_cancel_click"
+        android:visibility="invisible"/>
+    </LinearLayout>
+</RelativeLayout>

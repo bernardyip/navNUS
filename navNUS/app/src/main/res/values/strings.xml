@@ -13,4 +13,9 @@
     <string name="main_activity_button_search_text">Search</string>
     <string name="main_activity_debug_text">Debug:</string>
     <string name="title_activity_maps">Navigation</string>
+    <string name="title_activity_submit_sc">Submit Short Cut</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
 </resources>
