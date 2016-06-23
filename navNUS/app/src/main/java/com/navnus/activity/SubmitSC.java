@@ -179,6 +179,7 @@ public class SubmitSC extends AppCompatActivity {
     }
 
     public void button_submit_click(View view) {
+        final String emailBody = display.getText().toString();
         //call email sending function
         dialog = ProgressDialog.show(SubmitSC.this, "", "Sending data... Please Wait...", true, true, new DialogInterface.OnCancelListener(){
             @Override
@@ -193,9 +194,9 @@ public class SubmitSC extends AppCompatActivity {
                 try {
                     String[] toArr = {"navnus2016@gmail.com"};
                     m.setTo(toArr);
-                    m.setFrom("wooo@wooo.com");
-                    m.setSubject("This is an email sent using my Mail JavaMail wrapper from an Android device.");
-                    m.setBody("Email body.");
+                    m.setFrom("user@navNUS.com");
+                    m.setSubject("New Shortcut Submitted");
+                    m.setBody(emailBody); //email body
 
                     try {
                         //m.addAttachment("/sdcard/filelocation");
@@ -219,9 +220,9 @@ public class SubmitSC extends AppCompatActivity {
                     cancelBtn.setVisibility(View.INVISIBLE);
                     recordBtn.setEnabled(true);
                     display.setText("");
-                    Toast.makeText(SubmitSC.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SubmitSC.this, "Shortcut uploaded successfully. Pending admin approval.", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(SubmitSC.this, "Email was not sent.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SubmitSC.this, "An unexpected error had occurred, please try again", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute();
