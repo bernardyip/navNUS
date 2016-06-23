@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_name"
+            android:textSize="22dp"
+            android:textColor="#0062A9"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="48dp" >
+
+        <Button
+            android:id="@+id/navNusBtn"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/navicon" />
+
+        <Button
+            android:id="@+id/subSCBtn"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shortcuticon" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        android:layout_below="@+id/navNusBtn"
+        <TextView
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center|center_vertical"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@string/menu1" />
+
+        <TextView
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center|center_vertical"
+            android:text="@string/menu2"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!--Version Number-->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:text="@string/ver"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+</LinearLayout>

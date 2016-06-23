@@ -189,7 +189,8 @@ public class SubmitSC extends AppCompatActivity {
 
             ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },MY_PERMISSION_ACCESS_COARSE_LOCATION );
         }
-        locationManager.removeUpdates(locationListener);
+        if(locationManager!=null)
+            locationManager.removeUpdates(locationListener);
         //unregisterReceiver(receiver);
         super.onDestroy();
     }
