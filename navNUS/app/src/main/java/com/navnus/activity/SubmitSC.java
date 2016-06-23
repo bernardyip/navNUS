@@ -1,5 +1,6 @@
 package com.navnus.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,7 +8,10 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -20,9 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.navnus.R;
+import com.navnus.util.Mail;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class SubmitSC extends AppCompatActivity {
     /* GPS Constant Permission */
@@ -34,6 +40,7 @@ public class SubmitSC extends AppCompatActivity {
     private LocationManager locationManager;
     private Location currentLocation;
     private Timer myTimer;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,11 @@ public class SubmitSC extends AppCompatActivity {
         cancelBtn = (Button)findViewById(R.id.btn_cancel);
         display = (TextView)findViewById(R.id.tvDisplay);
         display.setMovementMethod(new ScrollingMovementMethod());
+
+        //If user doesn't have internet access
+        if(!isNetworkConnected()){
+            buildAlertMessageNoInternet();
+        }
     }
 
     public void button_record_click(View view) {
@@ -135,6 +147,27 @@ public class SubmitSC extends AppCompatActivity {
         alert.show();
     }
 
+    private void buildAlertMessageNoInternet() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("You are not connected to the internet, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                        finish();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
     public void button_stop_click(View view) {
         myTimer.cancel(); //stops getting loc every 5 secs
         stopBtn.setEnabled(false);
@@ -147,15 +180,52 @@ public class SubmitSC extends AppCompatActivity {
 
     public void button_submit_click(View view) {
         //call email sending function
-        Toast.makeText(getBaseContext(), "Email sending function", Toast.LENGTH_SHORT).show();
+        dialog = ProgressDialog.show(SubmitSC.this, "", "Sending data... Please Wait...", true, true, new DialogInterface.OnCancelListener(){
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+        final Mail m = new Mail("navnus2016@gmail.com", "navNUS123");
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override public Boolean doInBackground(Void... arg) {
+                Boolean success = false;
+                try {
+                    String[] toArr = {"navnus2016@gmail.com"};
+                    m.setTo(toArr);
+                    m.setFrom("wooo@wooo.com");
+                    m.setSubject("This is an email sent using my Mail JavaMail wrapper from an Android device.");
+                    m.setBody("Email body.");
 
-        //if success
-        submitBtn.setVisibility(View.INVISIBLE);
-        cancelBtn.setVisibility(View.INVISIBLE);
-        recordBtn.setEnabled(true);
-        display.setText("");
-        //if fail
-        //Toast.makeText(getBaseContext(), "An unexpected error had occured.", Toast.LENGTH_SHORT).show();
+                    try {
+                        //m.addAttachment("/sdcard/filelocation");
+
+                        if(m.send()) {
+                            success = true;
+                        }
+                    } catch(Exception e) {
+                        //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                        Log.e("MailApp", "Could not send email", e);
+                    }
+                } catch (Exception e) {
+                    Log.e("SendMail", e.getMessage(), e);
+                }
+                return success;
+            }
+            protected void onPostExecute(Boolean result) {
+                dialog.dismiss();
+                if(result){
+                    submitBtn.setVisibility(View.INVISIBLE);
+                    cancelBtn.setVisibility(View.INVISIBLE);
+                    recordBtn.setEnabled(true);
+                    display.setText("");
+                    Toast.makeText(SubmitSC.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(SubmitSC.this, "Email was not sent.", Toast.LENGTH_LONG).show();
+                }
+            }
+        }.execute();
+
     }
 
     public void button_cancel_click(View view) {
@@ -193,5 +263,11 @@ public class SubmitSC extends AppCompatActivity {
             locationManager.removeUpdates(locationListener);
         //unregisterReceiver(receiver);
         super.onDestroy();
+    }
+
+    //check if you are connected to a network
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 }

@@ -45,7 +45,7 @@ public class SplashScreen extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), MainActivity.class);
+            intent.setClass(getApplicationContext(), TempMenu.class);
             startActivity(intent);
             finish();
         }
