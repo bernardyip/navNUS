@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,9 @@ import edu.princeton.cs.algs4.DirectedEdge;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int fromId;
+    private int toId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,24 +42,15 @@ public class MainActivity extends AppCompatActivity {
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
         String from = ((EditText)findViewById(R.id.etFrom)).getText().toString();
         String to = ((EditText)findViewById(R.id.etTo)).getText().toString();
+        ((Button)findViewById(R.id.button_view_map)).setEnabled(false);
 
-        int fromId = -1;
-        int toId = -1;
+        fromId = -1;
+        toId = -1;
 
         //Make sure from and to are id (for now)
         try {
             fromId = Integer.parseInt(from);
             toId = Integer.parseInt(to);
-
-            //Hack to go to navigation
-            if (fromId == 547 && toId == 27) {
-                Intent intent = new Intent();
-                intent.putExtra("from", fromId);
-                intent.putExtra("to", toId);
-                intent.setClass(getApplicationContext(), MapsActivity.class);
-                startActivity(intent);
-            }
-
 
             LinkedList<DirectedEdge> path = Map.getPath(fromId, toId);
             StringBuffer pathString = new StringBuffer();
@@ -67,10 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.to()).name + " (" + Map.getVertex(edge.to()).id + ")\n");
                 }
+                ((Button)findViewById(R.id.button_view_map)).setEnabled(true);
             } else {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.from()).name + " -> " + Map.getVertex(edge.to()).name + "\n");
                 }
+                ((Button)findViewById(R.id.button_view_map)).setEnabled(true);
             }
 
             debugText.setText(pathString);
@@ -84,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
         inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         //(new ConsolidateVertices()).execute(null, null, null);
 
+    }
+
+    public void button_view_map_click(View view) {
+        Intent intent = new Intent();
+        intent.putExtra("from", fromId);
+        intent.putExtra("to", toId);
+        intent.setClass(getApplicationContext(), MapsActivity.class);
+        startActivity(intent);
     }
 
     public void setDebugText(String text) {
