@@ -10,20 +10,30 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "8g"
     }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/gson-2.4.jar')
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha2'
+    //compile files('libs/gson-2.4.jar')
+    //compile files('libs/javax.mail.jar')
+    compile 'com.android.support:appcompat-v7:23.0.0-alpha2'
     compile 'com.google.android.gms:play-services:9.0.2'
     compile 'com.android.support:design:23.4.0'
-    compile files('libs/javax.mail.jar')
+    compile 'com.android.support:multidex:1.0.1'
 }

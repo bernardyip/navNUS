@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -30,18 +31,13 @@ public class Map {
     public static void loadVertices(Context context) {
         try {
             //Read the data
-            StringBuilder data = new StringBuilder();
             InputStream json = context.getAssets().open("vertices");
-            BufferedReader in = new BufferedReader(new InputStreamReader(json));
-            String line;
-            while ((line=in.readLine()) != null) {
-                data.append(line);
-            }
-            in.close();
+            JsonReader in = new JsonReader(new InputStreamReader(json));
 
             //Convert to object
             Gson gson = new Gson();
-            vertices = gson.fromJson(data.toString(), new TypeToken<HashMap<Integer, Vertex>>(){}.getType());
+            vertices = gson.fromJson(in, new TypeToken<HashMap<Integer, Vertex>>(){}.getType());
+            in.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,18 +46,13 @@ public class Map {
     public static void loadFloydWarshall(Context context) {
         try {
             //Read the data
-            StringBuilder data = new StringBuilder();
             InputStream json = context.getAssets().open("floydwarshall");
-            BufferedReader in = new BufferedReader(new InputStreamReader(json));
-            String line;
-            while ((line=in.readLine()) != null) {
-                data.append(line);
-            }
-            in.close();
+            JsonReader in = new JsonReader(new InputStreamReader(json));
 
             //Convert to object
             Gson gson = new Gson();
-            graph = gson.fromJson(data.toString(), FloydWarshall.class);
+            graph = gson.fromJson(in, FloydWarshall.class);
+            in.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
