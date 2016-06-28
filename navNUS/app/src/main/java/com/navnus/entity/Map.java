@@ -5,10 +5,12 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import com.navnus.util.StringSimilarity;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,6 +62,33 @@ public class Map {
 
     public static Vertex getVertex(int id) {
         return vertices.get(id);
+    }
+
+    public static String getVertexNameFromID(int id) {
+        return vertices.get(id).name;
+    }
+
+    public static int getIdFromName(String name){
+        for (int key : vertices.keySet()) {
+            Vertex v = vertices.get(key);
+            if(v.name.equals(name)){
+                return v.id;
+            }
+        }
+        return -1;
+    }
+
+    public static ArrayList<String> getSimilarNamesFromName(String name){
+        ArrayList<String> similarNames = new ArrayList<String>();
+        for (int key : vertices.keySet()) {
+            Vertex v = vertices.get(key);
+            double percentage = StringSimilarity.similarity(name, v.name);
+            if(percentage>=0.20 || v.name.toLowerCase().contains(name.toLowerCase())){
+                similarNames.add(v.name);
+                System.out.println(v.name);
+            }
+        }
+        return similarNames;
     }
 
     public static LinkedList<DirectedEdge> getPath(int src, int dest) {

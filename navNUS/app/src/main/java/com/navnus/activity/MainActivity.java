@@ -20,6 +20,7 @@ import com.navnus.R;
 import com.navnus.entity.Map;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         fromId = -1;
         toId = -1;
+
+        ArrayList<String> test = Map.getSimilarNamesFromName("COM");
+        Toast.makeText(MainActivity.this, "Test: " + test.toString(), Toast.LENGTH_LONG).show();
 
         //Make sure from and to are id (for now)
         try {
