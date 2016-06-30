@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import com.navnus.R;
 import com.navnus.entity.Map;
+import com.navnus.util.CustomAutoCompleteTextChangedListener;
+import com.navnus.util.CustomAutoCompleteView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -31,30 +35,57 @@ public class MainActivity extends AppCompatActivity {
 
     private int fromId;
     private int toId;
+    public String from, to;
+    public AutoCompleteTextView  fromAutoComplete, toAutoComplete;
+
+    // adapter for auto-complete
+    public ArrayAdapter<String> fromAdapter, toAdapter;
+    // just to add some initial value
+    public String[] item = new String[] {"Please search..."};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try{
+            fromAutoComplete = (AutoCompleteTextView) findViewById(R.id.etFrom);
+            toAutoComplete = (AutoCompleteTextView) findViewById(R.id.etTo);
+
+            // add the listener so it will tries to suggest while the user types
+            fromAutoComplete.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this,1));
+            toAutoComplete.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this,2));
+
+            // set our adapter
+            fromAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, item);
+            fromAutoComplete.setAdapter(fromAdapter);
+            toAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, item);
+            toAutoComplete.setAdapter(toAdapter);
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //initialize the variables to avoid null pointer
+        from = ((AutoCompleteTextView)findViewById(R.id.etFrom)).getText().toString();
+        to = ((AutoCompleteTextView)findViewById(R.id.etTo)).getText().toString();
     }
 
     //Testing button click
     public void button_search_click(View view) {
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
-        String from = ((EditText)findViewById(R.id.etFrom)).getText().toString();
-        String to = ((EditText)findViewById(R.id.etTo)).getText().toString();
+        from = ((AutoCompleteTextView)findViewById(R.id.etFrom)).getText().toString();
+        to = ((AutoCompleteTextView)findViewById(R.id.etTo)).getText().toString();
         ((Button)findViewById(R.id.button_view_map)).setEnabled(false);
 
         fromId = -1;
         toId = -1;
 
-        ArrayList<String> test = Map.getSimilarNamesFromName("COM");
-        Toast.makeText(MainActivity.this, "Test: " + test.toString(), Toast.LENGTH_LONG).show();
-
         //Make sure from and to are id (for now)
         try {
-            fromId = Integer.parseInt(from);
-            toId = Integer.parseInt(to);
+            fromId = Map.getIdFromName(from);
+            toId = Map.getIdFromName(to);
 
             LinkedList<DirectedEdge> path = Map.getPath(fromId, toId);
             StringBuffer pathString = new StringBuffer();

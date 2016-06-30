@@ -29,7 +29,7 @@
         android:layout_below="@+id/navigatetv"
         android:layout_marginTop="8dp"
         >
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etFrom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -44,7 +44,7 @@
             >
 
             <requestFocus />
-        </EditText>
+        </AutoCompleteTextView >
 
     </LinearLayout>
 
@@ -55,7 +55,7 @@
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="8dp"
         >
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etTo"
             android:hint="@string/main_activity_to"
             android:layout_width="match_parent"
