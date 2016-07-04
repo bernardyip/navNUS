@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class CustomAutoCompleteTextChangedListener implements TextWatcher{
 
-    public static final String TAG = "CustomAutoCompleteTextChangedListener.java";
+    //public static final String TAG = "CustomAutoCompleteTextChangedListener.java";
     Context context;
     int who; //1 = from , 2 = to
 
@@ -41,25 +41,28 @@ public class CustomAutoCompleteTextChangedListener implements TextWatcher{
 
         // if you want to see in the logcat what the user types
         //Log.e(TAG, "User input: " + userInput);
+        System.out.println("User input: " + userInput);
 
         MainActivity mainActivity = ((MainActivity) context);
-        String query= "";
+        /*String query= "";
         if(who == 1)
             query = mainActivity.from;
         else if(who == 2)
             query = mainActivity.to;
-
-        ArrayList<String> ddlSuggestions = Map.getSimilarNamesFromName(query);
+        */
+        ArrayList<String> ddlSuggestions = Map.getSimilarNamesFromName(userInput.toString());
 
         // update the adapater
         if(who == 1) {
-            mainActivity.fromAdapter.notifyDataSetChanged();
             mainActivity.fromAdapter = new ArrayAdapter<String>(mainActivity, android.R.layout.simple_dropdown_item_1line, ddlSuggestions);
+            mainActivity.fromAdapter.notifyDataSetChanged();
             mainActivity.fromAutoComplete.setAdapter(mainActivity.fromAdapter);
+            System.out.println("Called1");
         } else if(who == 2) {
-            mainActivity.toAdapter.notifyDataSetChanged();
             mainActivity.toAdapter = new ArrayAdapter<String>(mainActivity, android.R.layout.simple_dropdown_item_1line, ddlSuggestions);
+            mainActivity.toAdapter.notifyDataSetChanged();
             mainActivity.toAutoComplete.setAdapter(mainActivity.toAdapter);
+            System.out.println("Called2");
         }
     }
 

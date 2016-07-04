@@ -79,6 +79,7 @@ public class Map {
     }
 
     public static ArrayList<String> getSimilarNamesFromName(String name){
+        System.out.println("SearchFor:"+ name);
         ArrayList<String> similarNames = new ArrayList<String>();
         for (int key : vertices.keySet()) {
             Vertex v = vertices.get(key);
@@ -88,6 +89,9 @@ public class Map {
                 System.out.println(v.name);
             }
         }
+        System.out.println("SizeOfResults:"+similarNames.size());
+        if(similarNames.size() ==0)
+            similarNames.add("No Location Found");
         return similarNames;
     }
 

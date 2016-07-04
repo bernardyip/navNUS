@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             fromAutoComplete = (AutoCompleteTextView) findViewById(R.id.etFrom);
+            fromAutoComplete.setThreshold(0);
             toAutoComplete = (AutoCompleteTextView) findViewById(R.id.etTo);
+            toAutoComplete.setThreshold(0);
 
             // add the listener so it will tries to suggest while the user types
             fromAutoComplete.addTextChangedListener(new CustomAutoCompleteTextChangedListener(this,1));
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         from = ((AutoCompleteTextView)findViewById(R.id.etFrom)).getText().toString();
         to = ((AutoCompleteTextView)findViewById(R.id.etTo)).getText().toString();
         ((Button)findViewById(R.id.button_view_map)).setEnabled(false);
+
+        fromAdapter.clear();
+        toAdapter.clear();
 
         fromId = -1;
         toId = -1;
@@ -107,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
             debugText.setText(pathString);
         } catch (Exception e) {
+            if(fromId == -1)
+                Toast.makeText(MainActivity.this, "Location in \"From\" is invalid. Please try again.", Toast.LENGTH_LONG).show();
+            else if(toId == -1)
+                Toast.makeText(MainActivity.this, "Location in \"To\" is invalid. Please try again.", Toast.LENGTH_LONG).show();
+
             debugText.setText("Invalid ID!");
             e.printStackTrace();
         }
