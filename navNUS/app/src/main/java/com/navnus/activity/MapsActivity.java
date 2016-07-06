@@ -1,26 +1,17 @@
 package com.navnus.activity;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.navnus.R;
 import com.navnus.entity.GeoCoordinate;
 import com.navnus.entity.Map;
@@ -28,17 +19,15 @@ import com.navnus.entity.Vertex;
 import com.navnus.util.GPSTracker;
 
 import java.util.LinkedList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import edu.princeton.cs.algs4.DirectedEdge;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap;
+public class MapsActivity extends Activity {
+    //private GoogleMap mMap;
     private int from;
     private int to;
     private GPSTracker gps;
+    private MapboxMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +44,52 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this); //This calls onMapRead when it is done
+        MapView mapView = (MapView)findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                map = mapboxMap;
+                map.isMyLocationEnabled();
+                //Get the src and dest
+                LinkedList<DirectedEdge> path = Map.getPath(from, to);
+                Vertex start = Map.getVertex(from);
+                Vertex end = Map.getVertex(to);
+
+                // Add markers
+                MarkerViewOptions startMarker = new MarkerViewOptions().position(new LatLng(start.coordinate.latitude, start.coordinate.longitude)).title(start.name);
+                MarkerViewOptions endMarker = new MarkerViewOptions().position(new LatLng(end.coordinate.latitude, end.coordinate.longitude)).title(end.name);
+                map.addMarker(startMarker);
+                map.addMarker(endMarker);
+
+                //Draw the route
+                if (path != null) {
+                    for (DirectedEdge edge : path) {
+                        PolylineOptions route = new PolylineOptions();
+                        for (GeoCoordinate coord : edge.coordinates) {
+                            route.add(new LatLng(coord.latitude, coord.longitude));
+                        }
+                        map.addPolyline(route);
+                    }
+                }
+
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                //Center camera to show all markers
+                builder.include(startMarker.getPosition());
+                builder.include(endMarker.getPosition());
+                LatLngBounds bounds = builder.build();
+
+                int width = getResources().getDisplayMetrics().widthPixels;
+                int height = getResources().getDisplayMetrics().heightPixels;
+                int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+
+                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+                map.moveCamera(cu);
+            }
+        });
+
+        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        //mapFragment.getMapAsync(this); //This calls onMapRead when it is done
 
         /*
         //Get GPS and draw
@@ -76,7 +109,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         */
     }
 
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -86,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    /*
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -126,6 +159,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
         googleMap.moveCamera(cu);
-    }
 
+    }
+    */
 }

@@ -1,6 +1,7 @@
 <resources>
     <!--General-->
     <string name="app_name">navNUS</string>
+    <string name="accessToken">pk.eyJ1IjoiYmVybmFyZHlpcCIsImEiOiJjaXB6MDg5bnYweWJ1aDJucmptaHNvMjY5In0.mczdsr5CVJq-PUtmSA2RDA</string>
 
     <!--Splash Screen-->
     <string name="splash_screen_activity_loading_text_1">Loading data files</string>
@@ -14,6 +15,7 @@
     <string name="ver">Ver 0.0.5</string>
     <string name="menu1">Navigate NUS</string>
     <string name="menu2">Submit Shortcut</string>
+
     <!--activity_main-->
     <string name="main_activity_title">Navigate</string>
     <string name="main_activity_textbox_search_tooltip">(From) to (Destination)</string>
@@ -24,7 +26,7 @@
     <string name="title_activity_maps">Navigation</string>
     <string name="main_activity_button_view_map">View Map</string>
 
-
+    <!--activity_submit_sc-->
     <string name="title_activity_submit_sc">Submit Short Cut</string>
     <string name="record">Record</string>
     <string name="stop">Stop</string>

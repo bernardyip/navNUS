@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.mapbox.mapboxsdk.MapboxAccountManager;
 import com.navnus.R;
 import com.navnus.entity.Map;
 
@@ -36,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         thisActivity = this;
         loadingTextView = ((TextView)findViewById(R.id.splash_screen_textView_loading_text));
+        MapboxAccountManager.start(this, getString(R.string.accessToken));
         (new DataLoader()).execute(this, null, null);
 
         //Loading data text
