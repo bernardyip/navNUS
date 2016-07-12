@@ -67,7 +67,7 @@
             android:layout_below="@+id/email"
             android:textSize="14sp"
             android:hint="Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#6d6d6d"
             >
@@ -82,7 +82,7 @@
             android:layout_marginLeft="16dp"
             android:textSize="14sp"
             android:hint="Confirm Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#6d6d6d"
             >
