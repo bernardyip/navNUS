@@ -89,10 +89,11 @@ public class LoginActivity extends AppCompatActivity {
                 });
                 String uname = username.getText().toString();
                 String pwd = password.getText().toString();
-                //new LoginTask().execute(uname, pwd);
+
+                new LoginTask().execute(new Pair<Context, String>(LoginActivity.this, uname), new Pair<Context, String>(LoginActivity.this, pwd));
 
                 //For testing purposes, to remove before official release
-                if(uname.equals("admin") && pwd.equals("admin")) {
+                /*if(uname.equals("admin") && pwd.equals("admin")) {
                     SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putString("loginID", uname);
@@ -104,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }else{
                     new LoginTask().execute(new Pair<Context, String>(LoginActivity.this, uname), new Pair<Context, String>(LoginActivity.this, pwd));
-                }
+                }*/
             }
         });
 
@@ -175,6 +176,7 @@ public class LoginActivity extends AppCompatActivity {
     class LoginTask extends AsyncTask<Pair<Context, String>, Void, Boolean > {
         private MemberApi myApiService = null;
         private Context context;
+        Member member;
 
         @Override
         protected Boolean doInBackground(Pair<Context, String>... params) {
@@ -202,11 +204,12 @@ public class LoginActivity extends AppCompatActivity {
             String pwd = params[1].second;
 
             try {
-                Member member = myApiService.getMember(name).execute();
+                member = myApiService.getMember(name).execute();
                 if(member != null){
                     if(!pwd.equals(member.getPassword()))
                         return false;
-                }
+                }else
+                    return false;
             } catch (IOException e) {
                 System.out.println(e.getMessage());
                 return false;
@@ -222,6 +225,8 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("loginID", username.getText().toString());
                 editor.putString("pwd", password.getText().toString());
+                editor.putString("email", member.getEmail());
+                editor.putBoolean("isAdmin", member.getAdmin());
                 editor.putBoolean("isMember", true);
                 // Commit the edits!
                 editor.commit();
