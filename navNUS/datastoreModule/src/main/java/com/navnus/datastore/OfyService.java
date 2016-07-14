@@ -1,8 +1,5 @@
 package com.navnus.datastore;
 
-/**
- * Created by Crsytral on 7/12/2016.
- */
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
@@ -14,6 +11,7 @@ import com.googlecode.objectify.ObjectifyService;
 public class OfyService {
     static {
         ObjectifyService.register(Member.class);
+        ObjectifyService.register(Shortcut.class);
     }
     public static Objectify ofy() {
         return ObjectifyService.ofy();

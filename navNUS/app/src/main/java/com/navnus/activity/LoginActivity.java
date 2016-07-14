@@ -185,6 +185,7 @@ public class LoginActivity extends AppCompatActivity {
                         // - 10.0.2.2 is localhost's IP address in Android emulator
                         // - turn off compression when running against local devappserver
                         .setRootUrl("https://navnus-1370.appspot.com/_ah/api/")
+                        .setApplicationName("navNUS")
                         .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                             @Override
                             public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {

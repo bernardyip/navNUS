@@ -102,6 +102,8 @@ public class Registration extends AppCompatActivity {
             String pwd = arg0[1];
             String name = arg0[2];
             boolean isExist = false;
+
+            //checks if member already exists in database
             try{
                 Member member = myApiService.getMember(name).execute();
                 if(member!= null)
@@ -110,6 +112,7 @@ public class Registration extends AppCompatActivity {
                 System.out.println(e.getMessage());
             }
 
+            //inserts a new member record into database
             try {
                 if(isExist){
                         return 2; //username already exist
@@ -123,7 +126,7 @@ public class Registration extends AppCompatActivity {
                 }
             } catch (IOException e) {
                 System.out.println(e.getMessage());
-                return 0;
+                return 0; //any other unknown error
             }
             return 1;
         }

@@ -1,8 +1,5 @@
 package com.navnus.datastore;
 
-/**
- * Created by Crsytral on 7/12/2016.
- */
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 

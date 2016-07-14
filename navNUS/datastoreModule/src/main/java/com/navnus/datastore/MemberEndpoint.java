@@ -132,7 +132,7 @@ public class MemberEndpoint {
      * @return a response that encapsulates the result list and the next page token/cursor
      */
     @ApiMethod(
-            name = "listMember",
+            name = "list",
             path = "member",
             httpMethod = ApiMethod.HttpMethod.GET)
     public CollectionResponse<Member> list(@Nullable @Named("cursor") String cursor, @Nullable @Named("limit") Integer limit) {
@@ -149,13 +149,11 @@ public class MemberEndpoint {
         return CollectionResponse.<Member>builder().setItems(memberList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private boolean checkExists(String username) throws NotFoundException {
+    private void checkExists(String username) throws NotFoundException {
         try {
             ofy().load().type(Member.class).id(username).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {
             System.out.println("Could not find Member with ID: " + username);
-            return false;
         }
-        return true;
     }
 }

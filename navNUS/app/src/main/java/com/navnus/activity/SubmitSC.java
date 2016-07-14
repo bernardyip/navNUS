@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -23,9 +24,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.navnus.R;
+import com.navnus.datastore.shortcutApi.ShortcutApi;
+import com.navnus.datastore.shortcutApi.model.Shortcut;
 import com.navnus.util.Mail;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -179,6 +188,21 @@ public class SubmitSC extends AppCompatActivity {
     }
 
     public void button_submit_click(View view) {
+        String coordinates = display.getText().toString();
+        Date date = new Date();
+        SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
+        String userID = settings.getString("loginID", " ");
+        String email = settings.getString("email", " ");
+
+        new SubmitSCTask().execute(userID, email, date.toString(), coordinates);
+
+        dialog = ProgressDialog.show(SubmitSC.this, "", "Sending data... Please Wait...", true, true, new DialogInterface.OnCancelListener(){
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+            }
+        });
+        /*  EMAIL CODE
         final String emailBody = display.getText().toString();
         //call email sending function
         dialog = ProgressDialog.show(SubmitSC.this, "", "Sending data... Please Wait...", true, true, new DialogInterface.OnCancelListener(){
@@ -226,7 +250,7 @@ public class SubmitSC extends AppCompatActivity {
                 }
             }
         }.execute();
-
+        */
     }
 
     public void button_cancel_click(View view) {
@@ -270,5 +294,60 @@ public class SubmitSC extends AppCompatActivity {
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
+    }
+
+    private class SubmitSCTask extends AsyncTask<String, Void, Integer> {
+        private ShortcutApi myApiService = null;
+
+        @Override
+        protected Integer doInBackground(String... arg0) {
+            if(myApiService == null) {  // Only do this once
+                ShortcutApi.Builder builder = new ShortcutApi.Builder(AndroidHttp.newCompatibleTransport(),
+                        new AndroidJsonFactory(), null)
+                        // options for running against local devappserver
+                        // - 10.0.2.2 is localhost's IP address in Android emulator
+                        // - turn off compression when running against local devappserver
+                        .setRootUrl("https://navnus-1370.appspot.com/_ah/api/")
+                        .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+                            @Override
+                            public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                                abstractGoogleClientRequest.setDisableGZipContent(true);
+                            }
+                        });
+                // end options for devappserver
+
+                myApiService = builder.build();
+            }
+
+            Shortcut shortcut = new Shortcut();
+            shortcut.setUsername(arg0[0]);
+            shortcut.setEmail(arg0[1]);
+            shortcut.setDate(arg0[2]);
+            shortcut.setCoordinates(arg0[3]);
+            shortcut.setStatus(false);
+
+            try{
+                myApiService.insertShortcut(shortcut).execute();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                return 0;
+            }
+            return 1;
+        }
+
+        protected void onPostExecute(Integer result) {
+            dialog.dismiss();
+            if (result==1) {
+                submitBtn.setVisibility(View.INVISIBLE);
+                cancelBtn.setVisibility(View.INVISIBLE);
+                recordBtn.setEnabled(true);
+                display.setText("");
+                Toast toast = Toast.makeText(getApplicationContext(), "Shortcut uploaded successfully. Pending admin approval.", Toast.LENGTH_LONG);
+                toast.show();
+            }else {
+                Toast toast = Toast.makeText(getApplicationContext(), "An unexpected error had occurred. Please contact administrator if problem persists.", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
     }
 }
