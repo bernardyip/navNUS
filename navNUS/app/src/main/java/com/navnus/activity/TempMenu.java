@@ -14,14 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.navnus.R;
 
 public class TempMenu extends AppCompatActivity {
-    Button navNus, submitSC;
+    Button navNus, submitSC, adminAP;
+    TextView adminAPTV;
     String userID;
-    boolean isMember;
+    boolean isMember, isAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class TempMenu extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
         userID = settings.getString("loginID", "Guest");
         isMember = settings.getBoolean("isMember", false);
+        isAdmin = settings.getBoolean("isAdmin", false);
 
         navNus = (Button) findViewById(R.id.navNusBtn);
         navNus.setOnClickListener(new View.OnClickListener(){
@@ -53,6 +56,23 @@ public class TempMenu extends AppCompatActivity {
                 }
             }
         });
+
+        //admin-only function
+        adminAP = (Button) findViewById(R.id.adminAPBtn);
+        adminAP.setVisibility(View.GONE);
+        adminAPTV = (TextView) findViewById(R.id.adminAPTV);
+        adminAPTV.setVisibility(View.GONE);
+        if(isAdmin) {
+            adminAP.setVisibility(View.VISIBLE);
+            adminAPTV.setVisibility(View.VISIBLE);
+            adminAP.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View arg0) {
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(), AdminSCListDisplay.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         Toast.makeText(getBaseContext(), "Welcome " + userID, Toast.LENGTH_SHORT).show();
         if(!isMember){

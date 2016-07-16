@@ -44,6 +44,15 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/shortcuticon" />
 
+        <Button
+            android:id="@+id/adminAPBtn"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/adminapproveicon" />
+
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -65,6 +74,18 @@
             android:layout_centerHorizontal="true"
             android:gravity="center|center_vertical"
             android:text="@string/menu2"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/adminAPTV"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center|center_vertical"
+            android:text="@string/menu3"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 

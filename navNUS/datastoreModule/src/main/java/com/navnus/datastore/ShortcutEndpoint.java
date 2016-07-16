@@ -67,6 +67,20 @@ public class ShortcutEndpoint {
         return shortcut;
     }
 
+/*    @ApiMethod(
+            name = "getAllShortcut",
+            path = "",
+            httpMethod = ApiMethod.HttpMethod.GET)
+    public List<Shortcut> getAllShortcut() throws NotFoundException {
+        logger.info("Getting ALL Shortcuts");
+        //Shortcut shortcut = ofy().load().type(Shortcut.class).id(id).now();
+        List<Shortcut> shortcut = ofy().load().type(Shortcut.class).list();
+        if (shortcut == null) {
+            throw new NotFoundException("Could not find any Shortcut");
+        }
+        return shortcut;
+    }*/
+
     /**
      * Inserts a new {@code Shortcut}.
      */
