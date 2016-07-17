@@ -2,10 +2,11 @@ package com.navnus.activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class AdminSCListDisplay extends AppCompatActivity {
-    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
+    //String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
     List<Shortcut> allSC = null;
     ProgressDialog dialog;
     ArrayAdapter adapter;
@@ -32,6 +33,22 @@ public class AdminSCListDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_sclist_display);
+
+        listView = (ListView) findViewById(R.id.mobile_list);
+        // ListView Item Click Listener
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("ONCLICK REACHED");
+                // ListView Clicked item index
+                int itemPosition     = position;
+                // ListView Clicked item value
+                Shortcut  itemValue    = (Shortcut) listView.getItemAtPosition(position);
+                // Show Alert
+                Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
+                System.out.println("ONCLICK FINISHED");
+            }
+        });
 
         dialog = ProgressDialog.show(AdminSCListDisplay.this, "", "Retrieving records... Please wait...", true, true, new DialogInterface.OnCancelListener(){
             @Override
@@ -92,8 +109,6 @@ public class AdminSCListDisplay extends AppCompatActivity {
                     }*/
 
                     adapter = new ArrayAdapter<Shortcut>(AdminSCListDisplay.this, R.layout.activity_listview, allSC);
-
-                    listView = (ListView) findViewById(R.id.mobile_list);
                     listView.setAdapter(adapter);
                 }
             } else if(result==2) {

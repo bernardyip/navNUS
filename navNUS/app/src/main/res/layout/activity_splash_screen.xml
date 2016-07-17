@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="211dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/progressBar" />
 
     <TextView
