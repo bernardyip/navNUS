@@ -11,27 +11,33 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         >
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:ems="10"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="14sp"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:background="#182636"
-            android:alpha="0.50"
-            >
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:ems="10"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="8dp"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="14sp"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:background="@drawable/rounded_edittext"
+                android:alpha="0.50"
+                android:drawableLeft="@drawable/user"
+                >
+                <requestFocus />
+            </EditText>
 
-            <requestFocus />
-        </EditText>
-
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -49,12 +55,16 @@
             android:inputType="textPassword"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:background="#182636"
-            android:alpha="0.50"/>
+            android:background="@drawable/rounded_edittext"
+            android:alpha="0.50"
+            android:drawableLeft="@drawable/padlock"
+            />
 
 
     </LinearLayout>
@@ -67,7 +77,7 @@
         android:layout_height="48dip"
         android:layout_below="@+id/linearLayout2"
         android:layout_centerHorizontal="true"
-        android:text="Log In"
+        android:text="Login"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="16dp"

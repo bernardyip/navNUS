@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class AdminSCListDisplay extends AppCompatActivity {
-    //String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
     List<Shortcut> allSC = null;
     ProgressDialog dialog;
     ArrayAdapter adapter;
@@ -39,14 +38,12 @@ public class AdminSCListDisplay extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("ONCLICK REACHED");
                 // ListView Clicked item index
                 int itemPosition     = position;
                 // ListView Clicked item value
                 Shortcut  itemValue    = (Shortcut) listView.getItemAtPosition(position);
                 // Show Alert
                 Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
-                System.out.println("ONCLICK FINISHED");
             }
         });
 
