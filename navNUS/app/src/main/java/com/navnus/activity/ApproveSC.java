@@ -214,6 +214,7 @@ public class ApproveSC extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(getApplicationContext(), AdminSCListDisplay.class);
                 startActivity(intent);
+                finish();
             }else {
                 Toast toast = Toast.makeText(getApplicationContext(), "An unexpected error had occurred. Please contact administrator if problem persists.", Toast.LENGTH_LONG);
                 toast.show();
