@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("loginID", "Guest");
                 editor.putBoolean("isMember", false);
+                editor.putBoolean("isAdmin", false);
                 // Commit the edits!
                 editor.commit();
 
@@ -91,21 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                 String pwd = password.getText().toString();
 
                 new LoginTask().execute(new Pair<Context, String>(LoginActivity.this, uname), new Pair<Context, String>(LoginActivity.this, pwd));
-
-                //For testing purposes, to remove before official release
-                /*if(uname.equals("admin") && pwd.equals("admin")) {
-                    SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putString("loginID", uname);
-                    editor.putBoolean("isMember", true);
-                    // Commit the edits!
-                    editor.commit();
-                    Intent intent = new Intent(LoginActivity.this,TempMenu.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    new LoginTask().execute(new Pair<Context, String>(LoginActivity.this, uname), new Pair<Context, String>(LoginActivity.this, pwd));
-                }*/
             }
         });
 

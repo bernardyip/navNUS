@@ -44,7 +44,7 @@ public class Registration extends AppCompatActivity {
             public void onClick(View arg0) {
                 //check that all fields are entered
                 if(name.getText().toString().trim().equals("")){
-                    Toast toast = Toast.makeText(getApplicationContext(), "Please enter name", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please enter username", Toast.LENGTH_SHORT);
                     toast.show();
                 }else if(email.getText().toString().trim().equals("")){
                     Toast toast = Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT);
