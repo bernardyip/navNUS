@@ -113,7 +113,7 @@ public class ShortcutEndpoint {
             name = "updateShortcut",
             path = "shortcut/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public Shortcut update(@Named("id") int id, Shortcut shortcut) throws NotFoundException {
+    public Shortcut update(@Named("id") long id, Shortcut shortcut) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
         ofy().save().entity(shortcut).now();
@@ -132,7 +132,7 @@ public class ShortcutEndpoint {
             name = "removeShortcut",
             path = "shortcut/{id}",
             httpMethod = ApiMethod.HttpMethod.DELETE)
-    public void remove(@Named("id") int id) throws NotFoundException {
+    public void remove(@Named("id") long id) throws NotFoundException {
         checkExists(id);
         ofy().delete().type(Shortcut.class).id(id).now();
         logger.info("Deleted Shortcut with ID: " + id);
@@ -163,7 +163,7 @@ public class ShortcutEndpoint {
         return CollectionResponse.<Shortcut>builder().setItems(shortcutList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
-    private void checkExists(int id) throws NotFoundException {
+    private void checkExists(long id) throws NotFoundException {
         try {
             ofy().load().type(Shortcut.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {

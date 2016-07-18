@@ -55,6 +55,7 @@ public class AdminSCListDisplay extends AppCompatActivity {
                 intent.putExtra("status", itemValue.getStatus());
                 intent.setClass(getApplicationContext(), ApproveSC.class);
                 startActivity(intent);
+                finish();
             }
         });
 
