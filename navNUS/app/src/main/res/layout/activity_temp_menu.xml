@@ -8,7 +8,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#FFFFFF">
+        android:background="#182636">
 
         <TextView
             android:id="@+id/textView1"
@@ -16,8 +16,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/app_name"
-            android:textSize="22dp"
-            android:textColor="#0062A9"
+            android:textColor="#FFF"
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 

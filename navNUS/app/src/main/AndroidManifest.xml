@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.navnus"
     android:versionCode="1"
-    android:versionName="0.2.5">
+    android:versionName="0.3.0">
 
     <uses-sdk android:minSdkVersion="15" />
 
@@ -88,7 +88,8 @@
         <activity
             android:name=".activity.Registration"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.AdminSCListDisplay"></activity>
+        <activity android:name=".activity.AdminSCListDisplay" />
+        <activity android:name=".activity.ApproveSC"></activity>
     </application>
 
 </manifest>

@@ -57,18 +57,24 @@ public class Registration extends AppCompatActivity {
                     toast.show();
                 }else{
                     //Check if cfmPwd and Pwd matches
-                    if(pwd.getText().toString().equals(cfmPwd.getText().toString())){
-                        //do the registration process here
-                        dialog = ProgressDialog.show(Registration.this, "", "Registering your account...", true, true, new DialogInterface.OnCancelListener(){
-                            @Override
-                            public void onCancel(DialogInterface dialog) {
-                                finish();
-                            }
-                        });
-                        new RegistrationTask().execute(email.getText().toString(), pwd.getText().toString(), name.getText().toString());
-
+                    if(pwd.getText().toString().equals(cfmPwd.getText().toString())) {
+                        //check that forbidden usernames are not used
+                        if (name.getText().toString().trim().equals("Guest") || name.getText().toString().trim().equals("guest")){
+                            Toast toast = Toast.makeText(getApplicationContext(), "Invalid username entered. Please try again.", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else {
+                            //do the registration process here
+                            dialog = ProgressDialog.show(Registration.this, "", "Registering your account...", true, true, new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    finish();
+                                }
+                            });
+                            new RegistrationTask().execute(email.getText().toString().trim(), pwd.getText().toString().trim(), name.getText().toString().trim());
+                        }
                     }else{
-                        Toast toast = Toast.makeText(getApplicationContext(), "Passwords did not match. Please try again.", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Passwords do not match. Please try again.", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }

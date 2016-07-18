@@ -82,7 +82,8 @@ public class SubmitSC extends AppCompatActivity {
             recordBtn.setEnabled(false);
 
             //print log on tvDisplay
-            display.setText("Testing.....\n");
+            display.setText("");
+            //getGPSLoc(); //start point
 
             //Set timer, every 5 seconds capture user's coordinates and display on TV
             myTimer = new Timer();
@@ -133,8 +134,8 @@ public class SubmitSC extends AppCompatActivity {
             //Take current coordinate and display on TV
             display.setText(display.getText() + "\nGPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude() +"\n");
         }catch(Exception e){
-            System.out.println("GPS not turned on.");
-            Toast.makeText(getBaseContext(), "GPS not turned on.", Toast.LENGTH_SHORT).show();
+            System.out.println("GPS not ready yet. Could be not turned on.");
+            Toast.makeText(getBaseContext(), "Searching for GPS signal...", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splashscreen" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#182636"
+        android:id="@+id/frameLayout"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Shortcut Approval"
+            android:textSize="22dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:id="@+id/scIDTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_edittext"
+            android:alpha="0.85"
+            />
+
+        <TextView
+            android:id="@+id/scDateTV"
+            android:layout_below="@+id/scIDTV"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date Submitted: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_edittext"
+            android:alpha="0.85"
+            />
+
+        <TextView
+            android:id="@+id/scSubmitByTV"
+            android:layout_below="@+id/scDateTV"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submitted By: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_edittext"
+            android:alpha="0.85"
+            />
+
+        <TextView
+            android:id="@+id/coordinatesTV"
+            android:layout_below="@+id/scSubmitByTV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight=".5"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFF"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:gravity="bottom"
+            android:background="@drawable/rounded_edittext"
+            android:alpha="0.85"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTwoCB"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coordinatesTV"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="1.0"
+            >
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup"
+                android:orientation="horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:checkedButton="1"
+                android:background="@drawable/rounded_edittext"
+                android:alpha="0.85"
+                >
+                <CheckBox
+                    android:layout_weight=".5"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Approved"
+                    android:id="@+id/approveCB"
+                    android:layout_below="@+id/scDateTV"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:onClick="onCheckboxClicked"
+                    />
+
+                <CheckBox
+                    android:layout_weight=".5"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Disapproved"
+                    android:id="@+id/disapproveCB"
+                    android:layout_below="@+id/scDateTV"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:onClick="onCheckboxClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTwoBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutTwoCB"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="1.0"
+            >
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_weight=".5"
+                android:layout_width="0dip"
+                android:layout_height="38dp"
+                android:text="Update"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/roundededgebtn"
+                />
+
+            <Button
+                android:id="@+id/deleteBtn"
+                android:layout_weight=".5"
+                android:layout_width="0dip"
+                android:layout_height="38dp"
+                android:text="Delete"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/roundededgebtn"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

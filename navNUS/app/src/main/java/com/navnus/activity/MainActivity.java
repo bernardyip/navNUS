@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
         from = ((AutoCompleteTextView)findViewById(R.id.etFrom)).getText().toString();
         to = ((AutoCompleteTextView)findViewById(R.id.etTo)).getText().toString();
-        ((Button)findViewById(R.id.button_view_map)).setEnabled(false);
+        ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
 
         fromAdapter.clear();
         toAdapter.clear();

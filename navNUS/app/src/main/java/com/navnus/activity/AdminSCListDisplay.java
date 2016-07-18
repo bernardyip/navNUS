@@ -2,6 +2,7 @@ package com.navnus.activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,16 @@ public class AdminSCListDisplay extends AppCompatActivity {
                 Shortcut  itemValue    = (Shortcut) listView.getItemAtPosition(position);
                 // Show Alert
                 Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
+                //Pass the data to the next activity
+                Intent intent = new Intent();
+                intent.putExtra("id", itemValue.getId());
+                intent.putExtra("username", itemValue.getUsername());
+                intent.putExtra("date", itemValue.getDate());
+                intent.putExtra("coordinates", itemValue.getCoordinates());
+                intent.putExtra("email", itemValue.getEmail());
+                intent.putExtra("status", itemValue.getStatus());
+                intent.setClass(getApplicationContext(), ApproveSC.class);
+                startActivity(intent);
             }
         });
 
