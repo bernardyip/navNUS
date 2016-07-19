@@ -20,10 +20,9 @@
             android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-
     </FrameLayout>
 
+    <!--First Row (from L to R)-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="96dp"
@@ -44,13 +43,13 @@
             android:background="@drawable/shortcuticon" />
 
         <Button
-            android:id="@+id/adminAPBtn"
+            android:id="@+id/settingsBtn"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
-            android:background="@drawable/adminapproveicon" />
+            android:background="@drawable/settings" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -77,7 +76,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/adminAPTV"
+            android:id="@+id/settingsTV"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -87,6 +86,57 @@
             android:text="@string/menu3"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!--Second Row (from L to R)-->
+
+    <RelativeLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="40dp" >
+
+
+        <Button
+            android:id="@+id/adminAPBtn"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/adminapproveicon" />
+
+       <!-- <Button
+            android:id="@+id/contactUsBtn"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/contact" /> -->
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/adminAPTV"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center|center_vertical"
+            android:text="@string/menu4"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <!--<TextView
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center|center_vertical"
+            android:text="Contact Us"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" /> -->
 
     </RelativeLayout>
 

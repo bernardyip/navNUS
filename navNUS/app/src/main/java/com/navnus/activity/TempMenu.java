@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.navnus.R;
 
 public class TempMenu extends AppCompatActivity {
-    Button navNus, submitSC, adminAP;
+    Button navNus, submitSC, settingsBtn, adminAP;
     TextView adminAPTV;
     String userID;
     boolean isMember, isAdmin;
@@ -57,6 +57,14 @@ public class TempMenu extends AppCompatActivity {
             }
         });
 
+        settingsBtn = (Button) findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View arg0) {
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(), UserAccount.class);
+                    startActivity(intent);
+            }
+        });
         //admin-only function
         adminAP = (Button) findViewById(R.id.adminAPBtn);
         adminAP.setVisibility(View.GONE);

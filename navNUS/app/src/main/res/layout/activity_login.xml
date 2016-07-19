@@ -64,11 +64,8 @@
             android:alpha="0.50"
             android:drawableLeft="@drawable/padlock"
             />
-
-
+        
     </LinearLayout>
-
-
 
     <Button
         android:id="@+id/button1"

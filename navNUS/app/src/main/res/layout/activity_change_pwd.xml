@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splashscreen" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#182636"
+        android:id="@+id/frameLayout"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Change Password"
+            android:textSize="22dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_edittext"
+        android:alpha="0.85">
+
+        <TextView
+            android:id="@+id/cpHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center|center_vertical"
+            android:textSize="18sp"
+            android:text="Enter your old password"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            />
+
+        <EditText
+            android:id="@+id/oldPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cpHead"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center|center_vertical"
+            android:inputType="textPassword"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF">
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginTop="16dp">
+        <Button
+            android:id="@+id/nextButton1"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+
+            android:layout_centerHorizontal="true"
+            android:text="Next"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/roundededgebtn"/>
+
+        <Button
+            android:id="@+id/nextButton2"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_centerHorizontal="true"
+            android:text="Next"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/roundededgebtn"/>
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_centerHorizontal="true"
+            android:text="Done"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/roundededgebtn"/>
+
+    </RelativeLayout>
+</LinearLayout>
