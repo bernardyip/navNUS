@@ -44,7 +44,7 @@ public class AdminSCListDisplay extends AppCompatActivity {
                 // ListView Clicked item value
                 Shortcut  itemValue    = (Shortcut) listView.getItemAtPosition(position);
                 // Show Alert
-                Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
                 //Pass the data to the next activity
                 Intent intent = new Intent();
                 intent.putExtra("id", itemValue.getId());

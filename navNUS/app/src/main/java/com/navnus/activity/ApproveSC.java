@@ -21,11 +21,29 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.navnus.R;
 import com.navnus.datastore.shortcutApi.ShortcutApi;
 import com.navnus.datastore.shortcutApi.model.Shortcut;
+import com.navnus.entity.GeoCoordinate;
+import com.navnus.entity.Map;
+import com.navnus.entity.Vertex;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import edu.princeton.cs.algs4.DirectedEdge;
 
 public class ApproveSC extends AppCompatActivity {
     private Long id;
@@ -34,6 +52,7 @@ public class ApproveSC extends AppCompatActivity {
     Button updateBtn, deleteBtn;
     ProgressDialog dialog;
     CheckBox approveCB, disapproveCB;
+    private MapboxMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +126,68 @@ public class ApproveSC extends AppCompatActivity {
                                 }).show();
             }
         });
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        MapView mapView = (MapView)findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                map = mapboxMap;
+                map.isMyLocationEnabled();
+                //Get the src and dest
+                String data = coordinates;
+                ArrayList<String> latList = new ArrayList<String>();
+                ArrayList<String> lngList = new ArrayList<String>();
+                BufferedReader bufReader = new BufferedReader(new StringReader(data));
+                String line=null;
+                try {
+                    while ((line = bufReader.readLine()) != null) {
+                        if(line.contains("GPS Locations:")){
+                            latList.add(line.substring(line.indexOf(":")+2,line.indexOf(",")));
+                            lngList.add(line.substring(line.indexOf(",")+2));
+                            System.out.println("Check:" + latList.get(0) +","+lngList.get(0));
+                        }
+                    }
+                }catch (Exception e){
+                    System.out.println("Coordinates data cannot be process properly.");
+                }
+
+                // Add markers
+                MarkerViewOptions startMarker = new MarkerViewOptions().position(new LatLng(Double.parseDouble(latList.get(0)), Double.parseDouble(lngList.get(0)))).title("Shortcut Start");
+                MarkerViewOptions endMarker = new MarkerViewOptions().position(new LatLng(Double.parseDouble(latList.get(latList.size()-1)), Double.parseDouble(lngList.get(lngList.size()-1)))).title("Shortcut End");
+                map.addMarker(startMarker);
+                map.addMarker(endMarker);
+
+                //Draw the route
+                if (latList != null) {
+                    PolylineOptions route = new PolylineOptions();
+                    for (int i=0; i<latList.size(); i++) {
+                        route.add(new LatLng(Double.parseDouble(latList.get(i)), Double.parseDouble(lngList.get(i))));
+                        if(i>0 && i<latList.size()-1) {
+                            MarkerViewOptions midMarker = new MarkerViewOptions().position(new LatLng(Double.parseDouble(latList.get(i)), Double.parseDouble(lngList.get(i)))).title(i + "");
+                            map.addMarker(midMarker);
+                        }
+                    }
+                    map.addPolyline(route);
+                }
+
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                //Center camera to show all markers
+                builder.include(startMarker.getPosition());
+                builder.include(endMarker.getPosition());
+                LatLngBounds bounds = builder.build();
+
+                int width = getResources().getDisplayMetrics().widthPixels;
+                int height = getResources().getDisplayMetrics().heightPixels;
+                int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+
+                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+                map.moveCamera(cu);
+            }
+        });
+
+
     }
 
     public void onCheckboxClicked(View view) {

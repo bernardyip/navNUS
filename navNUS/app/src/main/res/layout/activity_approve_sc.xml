@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,43 +26,50 @@
             />
     </FrameLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/rLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/frameLayout"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginRight="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:alpha="0.85">
 
         <TextView
             android:id="@+id/scIDTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:text="ID: "
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:background="@drawable/rounded_edittext"
-            android:alpha="0.85"
             />
 
         <TextView
             android:id="@+id/scDateTV"
             android:layout_below="@+id/scIDTV"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date Submitted: "
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:background="@drawable/rounded_edittext"
-            android:alpha="0.85"
             />
 
         <TextView
             android:id="@+id/scSubmitByTV"
             android:layout_below="@+id/scDateTV"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,8 +77,6 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:background="@drawable/rounded_edittext"
-            android:alpha="0.85"
             />
 
         <TextView
@@ -85,16 +91,26 @@
             android:scrollbars="vertical"
             android:fadeScrollbars="false"
             android:gravity="bottom"
-            android:background="@drawable/rounded_edittext"
-            android:alpha="0.85"
+            android:visibility="gone"
             />
+        </LinearLayout>
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapview"
+            android:layout_below="@+id/rLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            mapbox:style_url="@string/style_mapbox_streets"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutTwoCB"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/coordinatesTV"
-            android:layout_marginTop="16dp"
+            android:layout_below="@+id/mapview"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="horizontal"
             android:weightSum="1.0"
             >
@@ -145,7 +161,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayoutTwoCB"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             android:weightSum="1.0"
             >
@@ -155,8 +174,6 @@
                 android:layout_width="0dip"
                 android:layout_height="38dp"
                 android:text="Update"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginRight="16dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -169,13 +186,9 @@
                 android:layout_width="0dip"
                 android:layout_height="38dp"
                 android:text="Delete"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:background="@drawable/roundededgebtn"
                 />
         </LinearLayout>
-
-    </RelativeLayout>
 </RelativeLayout>
