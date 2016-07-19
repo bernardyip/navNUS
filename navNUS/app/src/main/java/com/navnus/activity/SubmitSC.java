@@ -69,7 +69,7 @@ public class SubmitSC extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(SubmitSC.this);
-                builder.setMessage("RECORD - Click on it to start recording your GPS position every 5secs to form your shortcut.\n\nSTOP - Click on it when you've reached the end point if your shortcut.\n\nSUBMIT - This button will only appear after clicking on STOP button, clicking this will submit the shortcut that you've just created.\n\nCANCEL - This button will only appear after clicking on STOP button. Click on this button if you have made a mistake and would like to start over again. All progress will be lost.")
+                builder.setMessage("RECORD - Click on it to start recording your GPS position every 5secs to form your shortcut.\n\nSTOP - Click on it when you've reached the end point if your shortcut.\n\nSUBMIT - This button will only appear after clicking on STOP button, clicking this will submit the shortcut that you've just created.\n\nCANCEL - This button will only appear after clicking on STOP button. Click on this button if you have made a mistake and would like to start over again. All progress will be lost.\n\n*After submitting your shortcut, the Administrator will need to verify the shortcut before approving it for other users to use.")
                         .setTitle("Tutorial - How to Use")
                         .setCancelable(false)
                         .setPositiveButton("Close", new DialogInterface.OnClickListener() {

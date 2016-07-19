@@ -3,6 +3,7 @@ package com.navnus.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -90,10 +91,19 @@ public class SplashScreen extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-            finish();
+            SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
+            boolean isMember = settings.getBoolean("isMember", false);
+            if(isMember){
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), TempMenu.class);
+                startActivity(intent);
+                finish();
+            }else {
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 }
