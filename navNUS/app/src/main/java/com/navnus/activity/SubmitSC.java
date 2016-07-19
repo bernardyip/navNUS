@@ -21,6 +21,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class SubmitSC extends AppCompatActivity {
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
 
     private Button recordBtn,stopBtn,submitBtn,cancelBtn;
+    private ImageButton helpBtn;
     private TextView display;
     private LocationManager locationManager;
     private Location currentLocation;
@@ -62,7 +64,23 @@ public class SubmitSC extends AppCompatActivity {
         cancelBtn = (Button)findViewById(R.id.btn_cancel);
         display = (TextView)findViewById(R.id.tvDisplay);
         display.setMovementMethod(new ScrollingMovementMethod());
+        helpBtn = (ImageButton) findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(SubmitSC.this);
+                builder.setMessage("RECORD - Click on it to start recording your GPS position every 5secs to form your shortcut.\n\nSTOP - Click on it when you've reached the end point if your shortcut.\n\nSUBMIT - This button will only appear after clicking on STOP button, clicking this will submit the shortcut that you've just created.\n\nCANCEL - This button will only appear after clicking on STOP button. Click on this button if you have made a mistake and would like to start over again. All progress will be lost.")
+                        .setTitle("Tutorial - How to Use")
+                        .setCancelable(false)
+                        .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                            public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                            }
+                        });
+                final AlertDialog alert = builder.create();
+                alert.show();
+            }
 
+        });
         //If user doesn't have internet access
         if(!isNetworkConnected()){
             buildAlertMessageNoInternet();

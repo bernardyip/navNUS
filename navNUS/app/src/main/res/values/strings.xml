@@ -29,7 +29,7 @@
     <string name="main_activity_button_view_map">View Map</string>
 
     <!--activity_submit_sc-->
-    <string name="title_activity_submit_sc">Submit Short Cut</string>
+    <string name="title_activity_submit_sc">Submit Shortcut</string>
     <string name="record">Record</string>
     <string name="stop">Stop</string>
     <string name="submit">Submit</string>
