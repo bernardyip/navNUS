@@ -48,6 +48,18 @@
             android:alpha="0.85"/>
 
         <Button
+            android:id="@+id/chngPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/roundededgebtn" />
+
+        <Button
             android:id="@+id/logoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,18 +68,6 @@
             android:layout_marginRight="16dp"
             android:gravity="center|center_vertical"
             android:text="logout"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:background="@drawable/roundededgebtn" />
-
-        <Button
-            android:id="@+id/chngPwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Change Password"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:textSize="14sp"
             android:textStyle="bold"
             android:background="@drawable/roundededgebtn" />
