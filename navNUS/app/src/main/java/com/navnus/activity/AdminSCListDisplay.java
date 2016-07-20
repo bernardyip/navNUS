@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -21,6 +22,7 @@ import com.navnus.datastore.shortcutApi.ShortcutApi;
 import com.navnus.datastore.shortcutApi.model.Shortcut;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminSCListDisplay extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class AdminSCListDisplay extends AppCompatActivity {
     ProgressDialog dialog;
     ArrayAdapter adapter;
     ListView listView;
+    Spinner showSpinner, orderBySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +45,17 @@ public class AdminSCListDisplay extends AppCompatActivity {
                 // ListView Clicked item index
                 int itemPosition     = position;
                 // ListView Clicked item value
-                Shortcut  itemValue    = (Shortcut) listView.getItemAtPosition(position);
+                String  itemValue    = (String) listView.getItemAtPosition(position);
                 // Show Alert
                 //Toast.makeText(getApplicationContext(), "Position :"+itemPosition+"  ListItem : " +itemValue.getId() , Toast.LENGTH_LONG).show();
                 //Pass the data to the next activity
                 Intent intent = new Intent();
-                intent.putExtra("id", itemValue.getId());
-                intent.putExtra("username", itemValue.getUsername());
-                intent.putExtra("date", itemValue.getDate());
-                intent.putExtra("coordinates", itemValue.getCoordinates());
-                intent.putExtra("email", itemValue.getEmail());
-                intent.putExtra("status", itemValue.getStatus());
+                intent.putExtra("id", allSC.get(position).getId());
+                intent.putExtra("username", allSC.get(position).getUsername());
+                intent.putExtra("date", allSC.get(position).getDate());
+                intent.putExtra("coordinates", allSC.get(position).getCoordinates());
+                intent.putExtra("email", allSC.get(position).getEmail());
+                intent.putExtra("status", allSC.get(position).getStatus());
                 intent.setClass(getApplicationContext(), ApproveSC.class);
                 startActivity(intent);
                 finish();
@@ -106,19 +109,24 @@ public class AdminSCListDisplay extends AppCompatActivity {
         protected void onPostExecute(Integer result) {
             dialog.dismiss();
             if (result==1) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Records retrieved successfully.", Toast.LENGTH_SHORT);
-                toast.show();
                 System.out.println("Check size : "+allSC.size());
                 if(allSC!=null) {
-                    /*String[] listArr = null;
-                    int count = 0;
-                    for(Shortcut s : allSC){
-                        listArr[count] = s.getId().toString();
-                        count++;
-                    }*/
+                    List<Shortcut> temp = allSC;
+                    ArrayList<String> processedData = new ArrayList<String>();
+                    for(Shortcut s : temp){
+                        String processedStr = "Submitted By : "+s.getUsername() + "\nDate : " + s.getDate();
+                        if(s.getStatus())
+                            processedStr = processedStr + "\nStatus : Approved";
+                        else
+                            processedStr = processedStr + "\nStatus : Disapproved";
 
-                    adapter = new ArrayAdapter<Shortcut>(AdminSCListDisplay.this, R.layout.activity_listview, allSC);
+                        processedData.add(processedStr);
+                    }
+                    //adapter = new ArrayAdapter<Shortcut>(AdminSCListDisplay.this, R.layout.activity_listview, allSC);
+                    adapter = new ArrayAdapter<String>(AdminSCListDisplay.this, R.layout.activity_listview, processedData);
                     listView.setAdapter(adapter);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Records retrieved successfully.", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             } else if(result==2) {
                 Toast toast = Toast.makeText(getApplicationContext(), "No records found.", Toast.LENGTH_SHORT);

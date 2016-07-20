@@ -162,11 +162,30 @@ public class ApproveSC extends AppCompatActivity {
                 //Draw the route
                 if (latList != null) {
                     PolylineOptions route = new PolylineOptions();
+                    double prevLat =0;
+                    double prevLng =0;
+                    int markerCount = 0;
                     for (int i=0; i<latList.size(); i++) {
-                        route.add(new LatLng(Double.parseDouble(latList.get(i)), Double.parseDouble(lngList.get(i))));
-                        if(i>0 && i<latList.size()-1) {
-                            MarkerViewOptions midMarker = new MarkerViewOptions().position(new LatLng(Double.parseDouble(latList.get(i)), Double.parseDouble(lngList.get(i)))).title(i + "");
-                            map.addMarker(midMarker);
+                        double currentLat = Double.parseDouble(latList.get(i));
+                        double currentLng = Double.parseDouble(lngList.get(i));
+                        //removes duplicate coordinates
+                        if(prevLat != currentLat || prevLng != currentLng) {
+                            route.add(new LatLng(Double.parseDouble(latList.get(i)), Double.parseDouble(lngList.get(i))));
+                            if(i>0 && i<latList.size()-1) {
+                                //Handles case where the second last pair of coordinates equals the last pair
+                                if(latList.size()>2 && i == latList.size()-2){
+                                    if(currentLat != Double.parseDouble(latList.get(latList.size()-1)) || currentLng != Double.parseDouble(lngList.get(lngList.size()-1))){
+                                        MarkerViewOptions midMarker = new MarkerViewOptions().position(new LatLng(currentLat, currentLng)).title(markerCount + "");
+                                        map.addMarker(midMarker);
+                                    }
+                                }else {
+                                    MarkerViewOptions midMarker = new MarkerViewOptions().position(new LatLng(currentLat, currentLng)).title(markerCount + "");
+                                    map.addMarker(midMarker);
+                                }
+                            }
+                            prevLat = currentLat;
+                            prevLng = currentLng;
+                            markerCount++;
                         }
                     }
                     map.addPolyline(route);

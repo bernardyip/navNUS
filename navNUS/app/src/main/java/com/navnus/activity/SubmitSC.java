@@ -29,6 +29,15 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.navnus.R;
 import com.navnus.datastore.shortcutApi.ShortcutApi;
 import com.navnus.datastore.shortcutApi.model.Shortcut;
@@ -53,6 +62,18 @@ public class SubmitSC extends AppCompatActivity {
     private Timer myTimer;
     ProgressDialog dialog;
 
+    private MapboxMap map;
+    private MapView mapView;
+    PolylineOptions route;
+    int padding;
+    int markerCounter=0;
+    double prevLat =0;
+    double prevLng =0;
+    boolean isLast=false;
+    MarkerViewOptions startMarker = null;
+    MarkerViewOptions secLastKnwnMarker = null;
+    MarkerViewOptions lastKnownMarker = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +90,11 @@ public class SubmitSC extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(SubmitSC.this);
-                builder.setMessage("RECORD - Click on it to start recording your GPS position every 5secs to form your shortcut.\n\nSTOP - Click on it when you've reached the end point if your shortcut.\n\nSUBMIT - This button will only appear after clicking on STOP button, clicking this will submit the shortcut that you've just created.\n\nCANCEL - This button will only appear after clicking on STOP button. Click on this button if you have made a mistake and would like to start over again. All progress will be lost.\n\n*After submitting your shortcut, the Administrator will need to verify the shortcut before approving it for other users to use.")
+                builder.setMessage("RECORD - Click on it to start recording your GPS position every 5secs to form your shortcut.\n\n" +
+                        "STOP - Click on it when you've reached the end point of your shortcut.\n\n" +
+                        "SUBMIT - This button will only appear after clicking on STOP button, clicking this will submit the shortcut that you've just created.\n\n" +
+                        "CANCEL - This button will only appear after clicking on STOP button. Click on this button if you have made a mistake and would like to start over again. All progress will be lost.\n\n" +
+                        "*After submitting your shortcut, the Administrator will need to verify the shortcut before approving it for other users to use.")
                         .setTitle("Tutorial - How to Use")
                         .setCancelable(false)
                         .setPositiveButton("Close", new DialogInterface.OnClickListener() {
@@ -85,10 +110,18 @@ public class SubmitSC extends AppCompatActivity {
         if(!isNetworkConnected()){
             buildAlertMessageNoInternet();
         }
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        mapView = (MapView)findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels;
+        padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+
     }
 
     public void button_record_click(View view) {
-
+        route = new PolylineOptions();
         //Check if user turn on GPS
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
 
@@ -149,8 +182,77 @@ public class SubmitSC extends AppCompatActivity {
                     1,   // 1m
                     locationListener);
             System.out.println("GPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude());
-            //Take current coordinate and display on TV
-            display.setText(display.getText() + "\nGPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude() +"\n");
+
+            mapView.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(MapboxMap mapboxMap) {
+                    map = mapboxMap;
+                    map.isMyLocationEnabled();
+
+                    // Add start marker
+                    if(markerCounter == 0) {
+                        startMarker = new MarkerViewOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title("Shortcut Start");
+                        map.addMarker(startMarker);
+                        route.add(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
+                        //Take current coordinate and display on TV
+                        display.setText(display.getText() + "\nGPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude() +"\n");
+                        markerCounter++;
+                        prevLat = currentLocation.getLatitude();
+                        prevLng = currentLocation.getLongitude();
+                    }else {
+                        //removes duplicate coordinates
+                        if(prevLat != currentLocation.getLatitude() || prevLng != currentLocation.getLongitude()) {
+                            route.add(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
+                            //Handles case where the second last pair of coordinates equals the last pair
+                          /*  if(isLast){
+                                if(currentLocation.getLatitude() != prevLat || currentLocation.getLongitude() != prevLng){
+                                    lastKnownMarker = new MarkerViewOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title("Shortcut End");
+                                    map.addMarker(lastKnownMarker);
+                                    //Take current coordinate and display on TV
+                                    display.setText(display.getText() + "\nGPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude() +"\n");
+                                    markerCounter++;
+                                    prevLat = currentLocation.getLatitude();
+                                    prevLng = currentLocation.getLongitude();
+                                }
+                            }else {*/
+                                if(markerCounter==1){
+                                    secLastKnwnMarker = startMarker;
+                                }else{
+                                    secLastKnwnMarker = lastKnownMarker;
+                                }
+                                lastKnownMarker = new MarkerViewOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title(markerCounter + "");
+                                map.addMarker(lastKnownMarker);
+                                //Take current coordinate and display on TV
+                                display.setText(display.getText() + "\nGPS Locations: "+currentLocation.getLatitude()+", "+currentLocation.getLongitude() +"\n");
+                                markerCounter++;
+                                prevLat = currentLocation.getLatitude();
+                                prevLng = currentLocation.getLongitude();
+                            //}
+
+                        }
+                    }
+                    //draws the line from the points
+                    map.addPolyline(route);
+
+                    try {
+                        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                        //Center camera to show latest 2 markers
+                        if(markerCounter==1)
+                            builder.include(startMarker.getPosition());
+                        else
+                            builder.include(secLastKnwnMarker.getPosition());
+
+                        builder.include(lastKnownMarker.getPosition());
+                        LatLngBounds bounds = builder.build();
+                        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+                        map.moveCamera(cu);
+                        map.setMaxZoom(map.getMaxZoom());
+                    }catch(Exception e){
+                        System.out.println("ERROR at LatLngBuilder : " + e.getMessage());
+                    }
+                }
+            });
+
         }catch(Exception e){
             System.out.println("GPS not ready yet. Could be not turned on.");
             Toast.makeText(getBaseContext(), "Searching for GPS signal...", Toast.LENGTH_SHORT).show();
@@ -201,7 +303,7 @@ public class SubmitSC extends AppCompatActivity {
         stopBtn.setEnabled(false);
         submitBtn.setVisibility(View.VISIBLE);
         cancelBtn.setVisibility(View.VISIBLE);
-
+        isLast = true;
         //take current coordinate as end point
         getGPSLoc();
     }
@@ -279,6 +381,11 @@ public class SubmitSC extends AppCompatActivity {
         submitBtn.setVisibility(View.INVISIBLE);
         cancelBtn.setVisibility(View.INVISIBLE);
         display.setText("");
+        markerCounter=0;
+        prevLat =0;
+        prevLng =0;
+        isLast=false;
+        map.clear();
     }
 
     private final LocationListener locationListener = new LocationListener() {
@@ -361,6 +468,11 @@ public class SubmitSC extends AppCompatActivity {
                 cancelBtn.setVisibility(View.INVISIBLE);
                 recordBtn.setEnabled(true);
                 display.setText("");
+                markerCounter=0;
+                prevLat =0;
+                prevLng =0;
+                isLast=false;
+                map.clear();
                 Toast toast = Toast.makeText(getApplicationContext(), "Shortcut uploaded successfully. Pending admin approval.", Toast.LENGTH_LONG);
                 toast.show();
             }else {
