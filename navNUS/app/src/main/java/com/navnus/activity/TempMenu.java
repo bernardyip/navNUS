@@ -87,7 +87,7 @@ public class TempMenu extends AppCompatActivity {
             final android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
             builder.setMessage("You are currently login as \"Guest\". You will have access to limited features only. Register a free account now to enjoy all the features of this app.")
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Limited features as Guest")
+                    .setTitle("Limited Features as Guest")
                     .setCancelable(false)
                     .setPositiveButton("Register Now", new DialogInterface.OnClickListener() {
                         public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
