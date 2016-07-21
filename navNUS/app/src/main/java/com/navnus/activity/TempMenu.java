@@ -67,9 +67,9 @@ public class TempMenu extends AppCompatActivity {
         });
         //admin-only function
         adminAP = (Button) findViewById(R.id.adminAPBtn);
-        adminAP.setVisibility(View.GONE);
+        adminAP.setVisibility(View.INVISIBLE);
         adminAPTV = (TextView) findViewById(R.id.adminAPTV);
-        adminAPTV.setVisibility(View.GONE);
+        adminAPTV.setVisibility(View.INVISIBLE);
         if(isAdmin) {
             adminAP.setVisibility(View.VISIBLE);
             adminAPTV.setVisibility(View.VISIBLE);

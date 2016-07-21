@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white" >
+    android:background="@drawable/menu" >
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -22,138 +22,144 @@
 
     </FrameLayout>
 
-    <!--First Row (from L to R)-->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginTop="48dp" >
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/navNusBtn"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginLeft="16dp"
-            android:background="@drawable/navicon" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:gravity="center|center_horizontal">
+            <Button
+                android:id="@+id/navNusBtn"
+                android:layout_width="160dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/navicon"/>
 
-        <Button
-            android:id="@+id/subSCBtn"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/shortcuticon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="@string/menu1" />
 
-        <Button
-            android:id="@+id/settingsBtn"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/settings" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="6dp"
+            android:orientation="vertical"
+            android:gravity="center|center_horizontal">
+            <Button
+                android:id="@+id/subSCBtn"
+                android:layout_width="160dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/shortcuticon"/>
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        android:layout_below="@+id/navNusBtn"
-        <TextView
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:gravity="center|center_vertical"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:text="@string/menu1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="@string/menu2" />
 
-        <TextView
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center|center_vertical"
-            android:text="@string/menu2"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/settingsTV"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            android:gravity="center|center_vertical"
-            android:text="@string/menu3"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+    </LinearLayout>
 
-    </RelativeLayout>
-
-    <!--Second Row (from L to R)-->
-
-    <RelativeLayout
-        android:id="@+id/linearLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginTop="40dp" >
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:orientation="horizontal" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
+            android:gravity="center|center_horizontal">
+            <Button
+                android:id="@+id/settingsBtn"
+                android:layout_width="160dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/settings"/>
 
-        <Button
-            android:id="@+id/adminAPBtn"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginLeft="16dp"
-            android:background="@drawable/adminapproveicon" />
+            <TextView
+                android:id="@+id/settingsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="@string/menu3" />
 
-       <!-- <Button
-            android:id="@+id/contactUsBtn"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/contact" /> -->
+        </LinearLayout>
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="6dp"
+            android:orientation="vertical"
+            android:gravity="center|center_horizontal">
+            <Button
+                android:id="@+id/adminAPBtn"
+                android:layout_width="160dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/adminapproveicon"/>
 
-        <TextView
-            android:id="@+id/adminAPTV"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:gravity="center|center_vertical"
-            android:text="@string/menu4"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/adminAPTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="@string/menu4" />
 
-        <!--<TextView
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center|center_vertical"
-            android:text="Contact Us"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" /> -->
+        </LinearLayout>
 
-    </RelativeLayout>
-
+    </LinearLayout>
     <!--Version Number-->
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="right|end">
 
         <TextView
             android:layout_width="96dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="16dp"
             android:text="@string/ver"
-            android:textColor="@android:color/black" />
+            android:gravity="right"
+            android:textSize="10dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            />
 
-    </RelativeLayout>
-
+    </FrameLayout>
 </LinearLayout>
