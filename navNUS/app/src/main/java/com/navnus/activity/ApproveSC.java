@@ -53,6 +53,7 @@ public class ApproveSC extends AppCompatActivity {
     ProgressDialog dialog;
     CheckBox approveCB, disapproveCB;
     private MapboxMap map;
+    private MapView mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class ApproveSC extends AppCompatActivity {
         });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        MapView mapView = (MapView)findViewById(R.id.mapview);
+        mapView = (MapView)findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -333,5 +334,36 @@ public class ApproveSC extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    // Add the mapView lifecycle to the activity's lifecycle methods
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
     }
 }

@@ -12,7 +12,7 @@
 
     <!--Menu-->
     <string name="action_settings">Settings</string>
-    <string name="ver">Ver 0.4.3</string>
+    <string name="ver">Ver 1.0.0</string>
     <string name="menu1">Navigate NUS</string>
     <string name="menu2">Submit Shortcut</string>
     <string name="menu3">Settings</string>

@@ -113,6 +113,14 @@ public class SubmitSC extends AppCompatActivity {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapView = (MapView)findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                // Customize map with markers, polylines, etc.
+                mapboxMap.setMyLocationEnabled(true);
+                //mapboxMap.getMyLocation();
+            }
+        });
 
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
@@ -405,6 +413,7 @@ public class SubmitSC extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        mapView.onDestroy();
         Log.v("GetDirection", "onDestory");
         if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 
@@ -480,5 +489,30 @@ public class SubmitSC extends AppCompatActivity {
                 toast.show();
             }
         }
+    }
+
+    // Add the mapView lifecycle to the activity's lifecycle methods
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
     }
 }
