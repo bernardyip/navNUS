@@ -77,12 +77,16 @@ public class MainActivity extends AppCompatActivity {
     //Testing button click
     public void button_search_click(View view) {
         TextView debugText = (TextView)findViewById(R.id.textview_debug_text);
-        from = ((AutoCompleteTextView)findViewById(R.id.etFrom)).getText().toString();
-        to = ((AutoCompleteTextView)findViewById(R.id.etTo)).getText().toString();
-        ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
-
-        fromAdapter.clear();
-        toAdapter.clear();
+        try {
+            from = ((AutoCompleteTextView) findViewById(R.id.etFrom)).getText().toString();
+            to = ((AutoCompleteTextView) findViewById(R.id.etTo)).getText().toString();
+            ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+            fromAdapter.clear();
+            toAdapter.clear();
+        }catch(Exception e){
+            System.out.println("ERROR :  " + e.getMessage());
+            ((Button)findViewById(R.id.button_view_map)).setVisibility(View.INVISIBLE);
+        }
 
         fromId = -1;
         toId = -1;
@@ -102,16 +106,17 @@ public class MainActivity extends AppCompatActivity {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.to()).name + " (" + Map.getVertex(edge.to()).id + ")\n");
                 }
-                ((Button)findViewById(R.id.button_view_map)).setEnabled(true);
+                ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
             } else {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.from()).name + " -> " + Map.getVertex(edge.to()).name + "\n");
                 }
-                ((Button)findViewById(R.id.button_view_map)).setEnabled(true);
+                ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
             }
 
             debugText.setText(pathString);
         } catch (Exception e) {
+            ((Button)findViewById(R.id.button_view_map)).setVisibility(View.INVISIBLE);
             if(fromId == -1)
                 Toast.makeText(MainActivity.this, "Location in \"From\" is invalid. Please try again.", Toast.LENGTH_LONG).show();
             else if(toId == -1)

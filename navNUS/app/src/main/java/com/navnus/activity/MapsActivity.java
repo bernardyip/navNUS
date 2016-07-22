@@ -3,6 +3,8 @@ package com.navnus.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -10,7 +12,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
@@ -38,14 +44,21 @@ public class MapsActivity extends Activity {
     private Vertex to;
     private GPSTracker gps;
     private MapboxMap map;
+    private MapView mapView;
     private LocationManager locationManager;
+    private LocationListener listener;
     private Context context;
+    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
+    private TextView distanceLeftTV, instructionsTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         context = this;
+
+        distanceLeftTV = (TextView)findViewById(R.id.distanceLeftTV);
+        instructionsTV = (TextView)findViewById(R.id.instructionsTV);
 
         //Get the src/dest
         Bundle extras = getIntent().getExtras();
@@ -55,7 +68,7 @@ public class MapsActivity extends Activity {
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        MapView mapView = (MapView) findViewById(R.id.mapview);
+        mapView= (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -101,7 +114,7 @@ public class MapsActivity extends Activity {
                 crit.setAccuracy(Criteria.ACCURACY_LOW);
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 final String bestProvider = locationManager.getBestProvider(crit, false);
-                LocationListener listener = new LocationListener() {
+                listener = new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
                         // TODO Auto-generated method stub
@@ -109,6 +122,7 @@ public class MapsActivity extends Activity {
                         //Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", str);
                         double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
+                        distanceLeftTV.setText(distance + " left to your destination");
                         Log.w("NAVNUS", "Remaining Distance : " + distance);
                     }
 
@@ -138,7 +152,23 @@ public class MapsActivity extends Activity {
                 map.setMyLocationEnabled(true);
                 Location location = map.getMyLocation();
                 if (location == null) {
-                    Toast.makeText(getBaseContext(), "Please turn on your GPS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getBaseContext(), "Please turn on your GPS", Toast.LENGTH_SHORT).show();
+                    final AlertDialog.Builder adBuilder = new AlertDialog.Builder(MapsActivity.this);
+                    adBuilder.setMessage("Enable GPS to display your current location on to the map?")
+                            .setTitle("GPS Not Turned On")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    final AlertDialog alert = adBuilder.create();
+                    alert.show();
                 } else {
                     double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
                     Log.w("NAVNUS", "Remaining Distance : " + distance);
@@ -239,4 +269,40 @@ public class MapsActivity extends Activity {
 
     }
     */
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },MY_PERMISSION_ACCESS_COARSE_LOCATION );
+        }
+        if(locationManager!=null)
+            locationManager.removeUpdates(listener);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
 }
