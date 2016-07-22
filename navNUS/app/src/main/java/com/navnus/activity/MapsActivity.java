@@ -106,7 +106,7 @@ public class MapsActivity extends Activity {
                     public void onLocationChanged(Location location) {
                         // TODO Auto-generated method stub
                         String str = "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude();
-                        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", str);
                         double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
                         Log.w("NAVNUS", "Remaining Distance : " + distance);
@@ -115,14 +115,14 @@ public class MapsActivity extends Activity {
                     @Override
                     public void onProviderDisabled(String provider) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(getBaseContext(), "Gps turned off ", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), "Gps turned off ", Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", "GPS OFF");
                     }
 
                     @Override
                     public void onProviderEnabled(String provider) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(getBaseContext(), "Gps turned on ", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getBaseContext(), "Gps turned on ", Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", "GPS ON");
                     }
 
@@ -137,8 +137,13 @@ public class MapsActivity extends Activity {
                 locationManager.requestLocationUpdates(bestProvider, 0, 0, listener);
                 map.setMyLocationEnabled(true);
                 Location location = map.getMyLocation();
-                double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
-                Log.w("NAVNUS", "Remaining Distance : " + distance);
+                if (location == null) {
+                    Toast.makeText(getBaseContext(), "Please turn on your GPS", Toast.LENGTH_SHORT).show();
+                } else {
+                    double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
+                    Log.w("NAVNUS", "Remaining Distance : " + distance);
+                }
+
             }
         });
 
