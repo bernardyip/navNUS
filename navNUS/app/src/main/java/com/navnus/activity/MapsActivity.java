@@ -1,7 +1,17 @@
 package com.navnus.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
@@ -24,27 +34,28 @@ import edu.princeton.cs.algs4.DirectedEdge;
 
 public class MapsActivity extends Activity {
     //private GoogleMap mMap;
-    private int from;
-    private int to;
+    private Vertex from;
+    private Vertex to;
     private GPSTracker gps;
     private MapboxMap map;
+    private LocationManager locationManager;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        context = this;
 
         //Get the src/dest
-        from = -1;
-        to = -1;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            from = extras.getInt("from");
-            to = extras.getInt("to");
+            from = Map.getVertex(extras.getInt("from"));
+            to = Map.getVertex(extras.getInt("to"));
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        MapView mapView = (MapView)findViewById(R.id.mapview);
+        MapView mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -52,13 +63,11 @@ public class MapsActivity extends Activity {
                 map = mapboxMap;
                 map.isMyLocationEnabled();
                 //Get the src and dest
-                LinkedList<DirectedEdge> path = Map.getPath(from, to);
-                Vertex start = Map.getVertex(from);
-                Vertex end = Map.getVertex(to);
+                LinkedList<DirectedEdge> path = Map.getPath(from.id, to.id);
 
                 // Add markers
-                MarkerViewOptions startMarker = new MarkerViewOptions().position(new LatLng(start.coordinate.latitude, start.coordinate.longitude)).title(start.name);
-                MarkerViewOptions endMarker = new MarkerViewOptions().position(new LatLng(end.coordinate.latitude, end.coordinate.longitude)).title(end.name);
+                MarkerViewOptions startMarker = new MarkerViewOptions().position(new LatLng(from.coordinate.latitude, from.coordinate.longitude)).title(from.name);
+                MarkerViewOptions endMarker = new MarkerViewOptions().position(new LatLng(to.coordinate.latitude, to.coordinate.longitude)).title(to.name);
                 map.addMarker(startMarker);
                 map.addMarker(endMarker);
 
@@ -85,6 +94,51 @@ public class MapsActivity extends Activity {
 
                 CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                 map.moveCamera(cu);
+
+                //Start GPS Tracking
+                /********** get Gps location service LocationManager object ***********/
+                Criteria crit = new Criteria();
+                crit.setAccuracy(Criteria.ACCURACY_LOW);
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                final String bestProvider = locationManager.getBestProvider(crit, false);
+                LocationListener listener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        // TODO Auto-generated method stub
+                        String str = "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude();
+                        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", str);
+                        double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
+                        Log.w("NAVNUS", "Remaining Distance : " + distance);
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String provider) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(getBaseContext(), "Gps turned off ", Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", "GPS OFF");
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String provider) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(getBaseContext(), "Gps turned on ", Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", "GPS ON");
+                    }
+
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                        // TODO Auto-generated method stubx
+                    }
+                };
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getBaseContext(), "No Location!", Toast.LENGTH_SHORT);
+                }
+                locationManager.requestLocationUpdates(bestProvider, 0, 0, listener);
+                map.setMyLocationEnabled(true);
+                Location location = map.getMyLocation();
+                double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
+                Log.w("NAVNUS", "Remaining Distance : " + distance);
             }
         });
 
@@ -107,6 +161,24 @@ public class MapsActivity extends Activity {
             gps.showSettingsAlert();
         }
         */
+    }
+
+    /*
+     * Estimates distance between two points in latitude and longitude
+     *
+     * lat1, lon1 Start point, lat2, lon2 End point
+     * @returns Distance in Meters
+     */
+    public static double estimateDistance(double lat1, double lon1, double lat2, double lon2) {
+        final int R = 6378137; // Radius of the earth
+
+        Double latDistance = lat2 - lat1;
+        Double lonDistance = lon2 - lon1;
+        Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c; // convert to meters
+
+        return Math.sqrt(distance);
     }
 
     /**
