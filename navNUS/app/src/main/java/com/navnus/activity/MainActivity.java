@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             from = ((AutoCompleteTextView) findViewById(R.id.etFrom)).getText().toString();
             to = ((AutoCompleteTextView) findViewById(R.id.etTo)).getText().toString();
-            ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+            //((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
             fromAdapter.clear();
             toAdapter.clear();
         }catch(Exception e){
@@ -106,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.to()).name + " (" + Map.getVertex(edge.to()).id + ")\n");
                 }
-                ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+                //((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+                button_view_map_click(view);
             } else {
                 for (DirectedEdge edge : path) {
                     pathString.append(Map.getVertex(edge.from()).name + " -> " + Map.getVertex(edge.to()).name + "\n");
                 }
-                ((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+                //((Button)findViewById(R.id.button_view_map)).setVisibility(View.VISIBLE);
+                button_view_map_click(view);
             }
 
             debugText.setText(pathString);

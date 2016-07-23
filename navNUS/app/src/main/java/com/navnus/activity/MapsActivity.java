@@ -138,6 +138,7 @@ public class MapsActivity extends Activity {
                         // TODO Auto-generated method stub
                         //Toast.makeText(getBaseContext(), "Gps turned on ", Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", "GPS ON");
+                        distanceLeftTV.setText("Getting location... Please Wait...");
                     }
 
                     @Override

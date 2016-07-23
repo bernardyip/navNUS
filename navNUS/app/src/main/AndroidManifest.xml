@@ -4,7 +4,8 @@
     android:versionCode="1"
     android:versionName="1.0.0">
 
-    <uses-sdk android:minSdkVersion="15" />
+    <!-- to change minimum ver, change in gradle settings
+    <uses-sdk android:minSdkVersion="19" />-->
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
