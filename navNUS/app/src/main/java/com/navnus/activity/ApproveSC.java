@@ -67,7 +67,7 @@ public class ApproveSC extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener listener;
 
-    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
+    private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -431,9 +431,9 @@ public class ApproveSC extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
-        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+        if ( ContextCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 
-            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },MY_PERMISSION_ACCESS_COARSE_LOCATION );
+            ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.ACCESS_FINE_LOCATION  },MY_PERMISSION_ACCESS_FINE_LOCATION );
         }
         if(locationManager!=null)
             locationManager.removeUpdates(listener);
