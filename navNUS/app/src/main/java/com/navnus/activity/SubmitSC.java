@@ -31,6 +31,7 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -113,14 +114,14 @@ public class SubmitSC extends AppCompatActivity {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapView = (MapView)findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(new OnMapReadyCallback() {
+        /*mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 // Customize map with markers, polylines, etc.
                 mapboxMap.setMyLocationEnabled(true);
                 //mapboxMap.getMyLocation();
             }
-        });
+        });*/
 
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
@@ -243,18 +244,21 @@ public class SubmitSC extends AppCompatActivity {
                     map.addPolyline(route);
 
                     try {
-                        LatLngBounds.Builder builder = new LatLngBounds.Builder();
                         //Center camera to show latest 2 markers
-                        if(markerCounter==1)
-                            builder.include(startMarker.getPosition());
-                        else
+                        if(markerCounter==1) {
+                            mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                    .target(startMarker.getPosition())
+                                    .zoom(16)
+                                    .build());
+                        }else {
+                            LatLngBounds.Builder builder = new LatLngBounds.Builder();
                             builder.include(secLastKnwnMarker.getPosition());
-
-                        builder.include(lastKnownMarker.getPosition());
-                        LatLngBounds bounds = builder.build();
-                        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-                        map.moveCamera(cu);
-                        map.setMaxZoom(map.getMaxZoom());
+                            builder.include(lastKnownMarker.getPosition());
+                            LatLngBounds bounds = builder.build();
+                            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+                            map.moveCamera(cu);
+                            //map.setMaxZoom(map.getMaxZoom());
+                        }
                     }catch(Exception e){
                         System.out.println("ERROR at LatLngBuilder : " + e.getMessage());
                     }
