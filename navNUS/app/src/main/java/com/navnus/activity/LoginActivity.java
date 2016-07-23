@@ -30,6 +30,7 @@ import com.navnus.datastore.memberApi.MemberApi;
 import com.navnus.datastore.memberApi.model.Member;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, register, guestLogin;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView smiley;
     ProgressDialog dialog;
     String userID;
+    String hashPwd;
 
     /** Called when the activity is first created. */
     @Override
@@ -189,6 +191,25 @@ public class LoginActivity extends AppCompatActivity {
             String name = params[0].second;
             String pwd = params[1].second;
 
+            //hash the pwd
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(pwd.getBytes());
+                byte byteData[] = md.digest();
+
+                //convert the byte to hex format
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < byteData.length; i++) {
+                    sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                }
+
+                pwd = sb.toString();
+                hashPwd = pwd;
+            }catch (Exception e){
+                System.out.println("Error at pwd hashing : "+ e.getMessage());
+                return false;
+            }
+
             try {
                 member = myApiService.getMember(name).execute();
                 if(member != null){
@@ -210,7 +231,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences settings = getSharedPreferences("LoginDetail", 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("loginID", username.getText().toString());
-                editor.putString("pwd", password.getText().toString());
+                editor.putString("pwd", hashPwd);
                 editor.putString("email", member.getEmail());
                 editor.putBoolean("isAdmin", member.getAdmin());
                 editor.putBoolean("isMember", true);

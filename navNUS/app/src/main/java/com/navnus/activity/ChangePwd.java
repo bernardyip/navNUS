@@ -24,6 +24,7 @@ import com.navnus.datastore.memberApi.MemberApi;
 import com.navnus.datastore.memberApi.model.Member;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
 public class ChangePwd extends AppCompatActivity {
     SharedPreferences settings;
@@ -56,6 +57,23 @@ public class ChangePwd extends AppCompatActivity {
             public void onClick(View arg0) {
                 pwdTextField = (EditText) findViewById(R.id.oldPwd);
                 oldPwd = pwdTextField.getText().toString();
+
+                //hash the oldPwd
+                try {
+                    MessageDigest md = MessageDigest.getInstance("SHA-256");
+                    md.update(oldPwd.getBytes());
+                    byte byteData[] = md.digest();
+
+                    //convert the byte to hex format
+                    StringBuffer sb = new StringBuffer();
+                    for (int i = 0; i < byteData.length; i++) {
+                        sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                    }
+
+                    oldPwd = sb.toString();
+                }catch (Exception e){
+                    System.out.println("Error at pwd hashing : "+ e.getMessage());
+                }
 
                 //password matched
                 if(oldPwd.equals(originalPwd)){
@@ -141,14 +159,31 @@ public class ChangePwd extends AppCompatActivity {
             }
 
             context = params[0].first;
-            String name = params[0].second;
-            String pwd = params[1].second;
 
             member = new Member();
             member.setUsername(userID);
             member.setAdmin(isAdmin);
-            member.setPassword(cfmPwd);
             member.setEmail(email);
+
+            //hash the pwd
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(cfmPwd.getBytes());
+                byte byteData[] = md.digest();
+
+                //convert the byte to hex format
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < byteData.length; i++) {
+                    sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                }
+
+                cfmPwd = sb.toString();
+            }catch (Exception e){
+                System.out.println("Error at pwd hashing : "+ e.getMessage());
+                return false;
+            }
+
+            member.setPassword(cfmPwd);
 
             try {
                 myApiService.updateMember(userID, member).execute();

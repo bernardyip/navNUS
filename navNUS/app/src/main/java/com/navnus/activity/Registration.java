@@ -21,6 +21,7 @@ import com.navnus.datastore.memberApi.MemberApi;
 import com.navnus.datastore.memberApi.model.Member;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
 public class Registration extends AppCompatActivity {
 
@@ -108,6 +109,24 @@ public class Registration extends AppCompatActivity {
             String pwd = arg0[1];
             String name = arg0[2];
             boolean isExist = false;
+
+            //hash the pwd
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                md.update(pwd.getBytes());
+                byte byteData[] = md.digest();
+
+                //convert the byte to hex format
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0; i < byteData.length; i++) {
+                    sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+                }
+
+                pwd = sb.toString();
+            }catch (Exception e){
+                System.out.println("Error at pwd hashing : "+ e.getMessage());
+                return 0; //any other unknown error
+            }
 
             //checks if member already exists in database
             try{
