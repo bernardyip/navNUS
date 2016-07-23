@@ -23,6 +23,7 @@
             android:layout_alignParentTop="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Distance Left"
+            android:gravity="center"
             android:textColor="#FFF"
             android:padding="8dp"
             android:layout_marginLeft="16dp"

@@ -1,15 +1,25 @@
 package com.navnus.activity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +64,10 @@ public class ApproveSC extends AppCompatActivity {
     CheckBox approveCB, disapproveCB;
     private MapboxMap map;
     private MapView mapView;
+    private LocationManager locationManager;
+    private LocationListener listener;
+
+    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,10 +218,68 @@ public class ApproveSC extends AppCompatActivity {
 
                 CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                 map.moveCamera(cu);
+
+                //Start GPS Tracking
+                /********** get Gps location service LocationManager object ***********/
+                Criteria crit = new Criteria();
+                crit.setAccuracy(Criteria.ACCURACY_LOW);
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                final String bestProvider = locationManager.getBestProvider(crit, false);
+                listener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        // TODO Auto-generated method stub
+                        String str = "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude();
+                        //Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", str);
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String provider) {
+                        // TODO Auto-generated method stub
+                        //Toast.makeText(getBaseContext(), "Gps turned off ", Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", "GPS OFF");
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String provider) {
+                        // TODO Auto-generated method stub
+                        //Toast.makeText(getBaseContext(), "Gps turned on ", Toast.LENGTH_LONG).show();
+                        Log.w("NAVNUS", "GPS ON");
+                    }
+
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                        // TODO Auto-generated method stubx
+                    }
+                };
+                if (ActivityCompat.checkSelfPermission(ApproveSC.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ApproveSC.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getBaseContext(), "No Location!", Toast.LENGTH_SHORT);
+                }
+                locationManager.requestLocationUpdates(bestProvider, 0, 0, listener);
+                map.setMyLocationEnabled(true);
+                Location location = map.getMyLocation();
+                if (location == null) {
+                    //Toast.makeText(getBaseContext(), "Please turn on your GPS", Toast.LENGTH_SHORT).show();
+                    final android.support.v7.app.AlertDialog.Builder adBuilder = new android.support.v7.app.AlertDialog.Builder(ApproveSC.this);
+                    adBuilder.setMessage("Enable GPS to display your current location on to the map?")
+                            .setTitle("GPS Not Turned On")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    final android.support.v7.app.AlertDialog alert = adBuilder.create();
+                    alert.show();
+                }
             }
         });
-
-
     }
 
     public void onCheckboxClicked(View view) {
@@ -359,6 +431,12 @@ public class ApproveSC extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },MY_PERMISSION_ACCESS_COARSE_LOCATION );
+        }
+        if(locationManager!=null)
+            locationManager.removeUpdates(listener);
     }
 
     @Override

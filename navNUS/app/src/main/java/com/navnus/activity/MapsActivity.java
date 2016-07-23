@@ -15,7 +15,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,14 +41,15 @@ public class MapsActivity extends Activity {
     //private GoogleMap mMap;
     private Vertex from;
     private Vertex to;
-    private GPSTracker gps;
+    //private GPSTracker gps;
     private MapboxMap map;
     private MapView mapView;
     private LocationManager locationManager;
     private LocationListener listener;
     private Context context;
-    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
     private TextView distanceLeftTV, instructionsTV;
+
+    private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +122,7 @@ public class MapsActivity extends Activity {
                         //Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
                         Log.w("NAVNUS", str);
                         double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
-                        distanceLeftTV.setText(distance + " left to your destination");
+                        distanceLeftTV.setText(Math.round(distance) + "m left to your destination");
                         Log.w("NAVNUS", "Remaining Distance : " + distance);
                     }
 
@@ -172,6 +172,7 @@ public class MapsActivity extends Activity {
                 } else {
                     double distance = estimateDistance(location.getLatitude(), location.getLongitude(), to.coordinate.latitude, to.coordinate.longitude);
                     Log.w("NAVNUS", "Remaining Distance : " + distance);
+                    distanceLeftTV.setText(Math.round(distance) + "m left to your destination");
                 }
 
             }
