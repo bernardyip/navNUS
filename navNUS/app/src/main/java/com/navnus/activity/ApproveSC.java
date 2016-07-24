@@ -123,7 +123,7 @@ public class ApproveSC extends AppCompatActivity {
                         .setTitle("Confirm Delete Record?")
                         .setPositiveButton("Yes",
                                 new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
+                                    public void onClick(DialogInterface ndialog,
                                                         int which) {
                                         new DeleteSCTask().execute();
                                         dialog = ProgressDialog.show(ApproveSC.this, "", "Deleting record... Please Wait...", true, true, new DialogInterface.OnCancelListener(){
@@ -136,7 +136,7 @@ public class ApproveSC extends AppCompatActivity {
                                 })
                         .setNegativeButton("No",
                                 new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void onClick(DialogInterface ndialog, int which) {
                                     }
                                 }).show();
             }
