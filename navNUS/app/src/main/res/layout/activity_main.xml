@@ -43,6 +43,7 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
+            android:paddingLeft="8dp"
             android:background="@drawable/rounded_edittext"
             android:alpha="0.85"
             >
@@ -72,6 +73,7 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
+            android:paddingLeft="8dp"
             android:background="@drawable/rounded_edittext"
             android:alpha="0.85" />
 
