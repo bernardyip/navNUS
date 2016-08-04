@@ -1,3 +1,6 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.activity;
 
 import android.Manifest;
@@ -7,7 +10,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -43,17 +45,11 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.navnus.R;
 import com.navnus.datastore.shortcutApi.ShortcutApi;
 import com.navnus.datastore.shortcutApi.model.Shortcut;
-import com.navnus.entity.GeoCoordinate;
-import com.navnus.entity.Map;
-import com.navnus.entity.Vertex;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.LinkedList;
-
-import edu.princeton.cs.algs4.DirectedEdge;
 
 public class ApproveSC extends AppCompatActivity {
     private Long id;

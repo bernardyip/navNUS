@@ -1,3 +1,6 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.entity;
 
 import android.content.Context;
@@ -7,20 +10,15 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.navnus.util.StringSimilarity;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.FloydWarshall;
 
-/**
- * Created by Legend on 15/5/2016.
- */
 public class Map {
     public static FloydWarshall graph;
     public static HashMap<Integer, Vertex> vertices;

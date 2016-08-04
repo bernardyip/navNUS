@@ -1,3 +1,6 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.activity;
 
 import android.Manifest;
@@ -31,7 +34,6 @@ import com.navnus.R;
 import com.navnus.entity.GeoCoordinate;
 import com.navnus.entity.Map;
 import com.navnus.entity.Vertex;
-import com.navnus.util.GPSTracker;
 
 import java.util.LinkedList;
 

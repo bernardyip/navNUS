@@ -1,9 +1,11 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;

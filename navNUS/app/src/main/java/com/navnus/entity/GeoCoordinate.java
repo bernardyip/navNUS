@@ -1,4 +1,8 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.entity;
+
 import java.io.Serializable;
 
 public class GeoCoordinate implements Serializable {

@@ -1,33 +1,27 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.navnus.R;
 import com.navnus.entity.Map;
 import com.navnus.util.CustomAutoCompleteTextChangedListener;
-import com.navnus.util.CustomAutoCompleteView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.LinkedList;
-import java.util.regex.Pattern;
 
 import edu.princeton.cs.algs4.DirectedEdge;
 

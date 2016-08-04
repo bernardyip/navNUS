@@ -1,5 +1,7 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.entity;
-import java.io.Serializable;
 
 public class Vertex implements Comparable {
 	public int id;

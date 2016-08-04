@@ -1,3 +1,6 @@
+/*
+    Created By : Team Prop (Orbital 2016)
+ */
 package com.navnus.activity;
 
 import android.app.Activity;
@@ -8,14 +11,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
 import com.navnus.R;
 import com.navnus.entity.Map;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
